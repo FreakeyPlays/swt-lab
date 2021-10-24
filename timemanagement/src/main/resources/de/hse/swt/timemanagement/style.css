@@ -1,0 +1,43 @@
+/*Login-Page*/
+
+.loginLeftBG {
+  -fx-background-color: limegreen;
+}
+
+.loginRightBG {
+  -fx-background-color: #fff;
+}
+
+.loginBtn {
+  -fx-background-color: transparent;
+  -fx-border-color: black;
+  -fx-border-width: 2px;
+}
+
+.loginBtn:hover {
+  -fx-background-color: lightgrey;
+}
+
+.loginBtn:pressed {
+  -fx-background-color: grey;
+}
+
+.inputUSR,
+.inputPWD {
+  -fx-background-color: transparent;
+  -fx-border-width: 0 0 2px 0;
+  -fx-border-color: limegreen;
+}
+
+.loginExit {
+  -fx-background-color: transparent;
+  -fx-padding: 0 10px;
+}
+
+.loginExit:hover {
+  -fx-background-color: lightgrey;
+}
+
+.loginExit:pressed {
+  -fx-background-color: grey;
+}
