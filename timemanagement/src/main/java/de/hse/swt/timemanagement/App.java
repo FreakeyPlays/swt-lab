@@ -1,12 +1,15 @@
 package de.hse.swt.timemanagement;
 
+import java.io.IOException;
+
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.stage.StageStyle;
 
 /**
  * JavaFX App
@@ -14,10 +17,32 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
+        Parent root = loadFXML("login");
+        scene = new Scene(root);
+        stage.setTitle("Time Managment System");
+        stage.initStyle(StageStyle.UNDECORATED);
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                xOffset = e.getSceneX();
+                yOffset = e.getSceneY();
+            }
+        });
+
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                stage.setX(e.getScreenX() - xOffset);
+                stage.setY(e.getScreenY() - yOffset);
+            }
+        });
+
         stage.setScene(scene);
         stage.show();
     }
