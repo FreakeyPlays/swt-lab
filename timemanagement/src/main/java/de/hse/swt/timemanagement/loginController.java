@@ -14,10 +14,10 @@ public class loginController {
     private Button loginBtn;
 
     @FXML
-    private PasswordField pwdInput;
+    private TextField usrInput;
 
     @FXML
-    private TextField usrInput;
+    private PasswordField pwdInput;
 
     @FXML
     private void exit(ActionEvent e) {
@@ -26,10 +26,6 @@ public class loginController {
 
     @FXML
     private void login() throws IOException {
-        String name = usrInput.getText();
-        String password = pwdInput.getText();
-        System.out.println("Name: " + name);
-        System.out.println("Password: " + password);
-        App.setRoot("secondary");
+        DBUtils.logInUser(usrInput.getText(), pwdInput.getText());
     }
 }
