@@ -33,17 +33,7 @@ public class DBUtils {
                     String retrievedHierarchy = resultSet.getString("hierarchy");
 
                     if (retrievedPassword.equals(password)) {
-                        if (retrievedHierarchy.equals("employee")) {
-                            App.setRoot("employee");
-                        } else if (retrievedHierarchy.equals("groupLeader")) {
-                            App.setRoot("groupLeader");
-                        } else if (retrievedHierarchy.equals("humanResurces")) {
-                            App.setRoot("humanResurces");
-                        } else {
-                            Alert alert = new Alert(Alert.AlertType.ERROR);
-                            alert.setContentText("Something went wrong!");
-                            alert.show();
-                        }
+                        App.setRoot("main");
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);

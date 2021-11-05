@@ -1,7 +1,7 @@
-/*Login-Page*/
+/*##### Login-Page #####*/
 
 .loginLeftBG {
-  -fx-background-color: #536DF3;
+  -fx-background-color: #536df3;
 }
 
 .loginRightBG {
@@ -27,7 +27,7 @@
 .inputPWD {
   -fx-background-color: transparent;
   -fx-border-width: 0 0 2px 0;
-  -fx-border-color: #536DF3;
+  -fx-border-color: #536df3;
 }
 
 .loginExit {
@@ -42,3 +42,40 @@
 .loginExit:pressed {
   -fx-background-color: grey;
 }
+
+/*##### Main Page #####*/
+
+/*Menu Bar*/
+.menuBtn {
+  -fx-background-color: transparent;
+}
+
+.menuBtn:hover {
+  -fx-background-color: #657ef8;
+}
+
+.menuBtn:active {
+  -fx-background-color: #000;
+}
+
+.active {
+  -fx-background-color: #536df3;
+}
+
+.logoutBtn {
+  -fx-background-color: transparent;
+  -fx-border-color: #000;
+  -fx-border-width: 2px;
+  -fx-border-radius: 8px;
+}
+
+.test {
+  -fx-font-family: "Inter";
+}
+/*Worktime Window*/
+
+/*FlexTime Window*/
+
+/*Vacation Booking Window*/
+
+/*Employee Interact Window*/
