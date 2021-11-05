@@ -18,16 +18,19 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     private static Scene scene;
+    public static Stage mainStage;
     private double xOffset = 0;
     private double yOffset = 0;
 
     @Override
     public void start(Stage stage) throws IOException {
+        mainStage = stage;
         Parent root = loadFXML("login");
         scene = new Scene(root);
-        stage.setTitle("Time Managment System");
-        stage.initStyle(StageStyle.UNDECORATED);
+        mainStage.setTitle("Time Managment System");
+        mainStage.initStyle(StageStyle.UNDECORATED);
 
+        // Move the Login Screen
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -39,17 +42,20 @@ public class App extends Application {
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                stage.setX(e.getScreenX() - xOffset);
-                stage.setY(e.getScreenY() - yOffset);
+                mainStage.setX(e.getScreenX() - xOffset);
+                mainStage.setY(e.getScreenY() - yOffset);
             }
         });
 
-        stage.setScene(scene);
-        stage.show();
+        // Show the Scene
+        mainStage.setScene(scene);
+        mainStage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
+        mainStage.setWidth(1280);
+        mainStage.setHeight(720);
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

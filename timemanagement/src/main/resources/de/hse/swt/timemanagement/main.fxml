@@ -67,7 +67,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="75.0" styleClass="logoutBtn" text="Logout">
+            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#exitAndLogout" prefHeight="25.0" prefWidth="75.0" styleClass="logoutBtn" text="Logout">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

@@ -17,6 +17,7 @@
 
 .loginBtn:hover {
   -fx-background-color: lightgrey;
+  -fx-background-radius: 8px;
 }
 
 .loginBtn:pressed {
