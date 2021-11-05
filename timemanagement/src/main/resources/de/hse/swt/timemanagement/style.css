@@ -1,7 +1,7 @@
 /*Login-Page*/
 
 .loginLeftBG {
-  -fx-background-color: limegreen;
+  -fx-background-color: #536DF3;
 }
 
 .loginRightBG {
@@ -12,6 +12,7 @@
   -fx-background-color: transparent;
   -fx-border-color: black;
   -fx-border-width: 2px;
+  -fx-border-radius: 8px;
 }
 
 .loginBtn:hover {
@@ -26,7 +27,7 @@
 .inputPWD {
   -fx-background-color: transparent;
   -fx-border-width: 0 0 2px 0;
-  -fx-border-color: limegreen;
+  -fx-border-color: #536DF3;
 }
 
 .loginExit {
