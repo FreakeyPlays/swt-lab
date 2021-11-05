@@ -227,5 +227,6 @@
             </Group>
          </children>
       </StackPane>
+      <Button mnemonicParsing="false" onAction="#minimize" text="_" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
    </children>
 </AnchorPane>

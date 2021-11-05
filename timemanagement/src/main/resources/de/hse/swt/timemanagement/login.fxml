@@ -42,7 +42,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="loginExit1" layoutX="383.0" layoutY="12.0" mnemonicParsing="false" onAction="#exit" prefHeight="40.0" prefWidth="28.0" rotate="90.0" styleClass="loginExit" stylesheets="@style.css" text="I" textFill="#536df3">
+            <Button fx:id="loginExit1" layoutX="383.0" layoutY="12.0" mnemonicParsing="false" onAction="#minimize" prefHeight="40.0" prefWidth="28.0" rotate="90.0" styleClass="loginExit" stylesheets="@style.css" text="I" textFill="#536df3">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

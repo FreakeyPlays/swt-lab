@@ -52,6 +52,14 @@ public class App extends Application {
         mainStage.show();
     }
 
+    public static void exit() {
+        System.exit(0);
+    }
+
+    public static void minimize() {
+        mainStage.setIconified(true);
+    }
+
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
         mainStage.setWidth(1280);

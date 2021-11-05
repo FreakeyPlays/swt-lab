@@ -21,7 +21,12 @@ public class loginController {
 
     @FXML
     private void exit(ActionEvent e) {
-        System.exit(0);
+        App.exit();
+    }
+
+    @FXML
+    private void minimize() {
+        App.minimize();
     }
 
     @FXML

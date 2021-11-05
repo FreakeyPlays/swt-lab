@@ -90,7 +90,12 @@ public class mainController {
 
     @FXML
     private void exitAndLogout(ActionEvent e) {
-        System.exit(0);
+        App.exit();
+    }
+
+    @FXML
+    private void minimize() {
+        App.minimize();
     }
 
 }
