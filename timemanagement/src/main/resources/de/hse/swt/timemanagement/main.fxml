@@ -67,11 +67,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#exitAndLogout" prefHeight="25.0" prefWidth="75.0" styleClass="logoutBtn" text="Logout">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <Line endX="150.0" layoutX="25.0" layoutY="206.0" />
             <Label fx:id="worktimeBtn" layoutY="235.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Start Worktime">
                <font>
                   <Font size="18.0" />
@@ -116,7 +112,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Line endX="150.0" layoutX="25.0" layoutY="206.0" />
             <Label fx:id="flexTimeBtn1" layoutY="335.0" prefHeight="50.0" prefWidth="200.0" text="Worktime">
                <font>
                   <Font size="18.0" />
@@ -143,14 +138,19 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
+            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#exitAndLogout" prefHeight="25.0" prefWidth="75.0" styleClass="logoutBtn" text="Logout">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
       <StackPane layoutX="201.0" layoutY="-3.0" prefHeight="726.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Group fx:id="workTimePane">
                <children>
-                  <DatePicker fx:id="wktDatePicker" prefHeight="40.0" prefWidth="500.0" promptText="choose a Date" />
-                  <Label fx:id="wktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="Monday, 11.12.2021">
+                  <DatePicker fx:id="wktDatePicker" onAction="#dateSelected" prefHeight="40.0" prefWidth="500.0" promptText="choose a Date" />
+                  <Label fx:id="wktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="No Date selected.">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -185,7 +185,7 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="wktEditBtn" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Edit">
+                  <Button fx:id="wktEditBtn" disable="true" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#editWorktime" opacity="0.0" prefHeight="40.0" prefWidth="75.0" text="Edit">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -194,8 +194,8 @@
             </Group>
             <Group fx:id="editWorkTimePane" disable="true" layoutX="300.0" layoutY="140.0" opacity="0.0">
                <children>
-                  <DatePicker fx:id="editWktDatePicker" prefHeight="40.0" prefWidth="500.0" promptText="choose a Date" />
-                  <Label fx:id="editWktDate" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="Monday, 11.12.2021">
+                  <Pane prefHeight="41.0" prefWidth="500.0" />
+                  <Label fx:id="editWktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="Monday, 11.12.2021">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -218,7 +218,7 @@
                      </font>
                   </Label>
                   <TextArea fx:id="editWktNotesIn" layoutY="250.0" prefHeight="150.0" prefWidth="500.0" />
-                  <Button fx:id="editWktSaveBtn" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="75.0" text="Save">
+                  <Button fx:id="editWktSaveBtn" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveWorktime" prefHeight="40.0" prefWidth="75.0" text="Save">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
