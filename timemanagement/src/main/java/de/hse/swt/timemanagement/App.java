@@ -1,6 +1,5 @@
 package de.hse.swt.timemanagement;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -10,7 +9,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -21,8 +19,8 @@ public class App extends Application {
 
     private static Scene scene;
     public static Stage mainStage;
-    private double xOffset = 0;
-    private double yOffset = 0;
+    private static double xOffset = 0;
+    private static double yOffset = 0;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -33,6 +31,13 @@ public class App extends Application {
         mainStage.initStyle(StageStyle.UNDECORATED);
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/de/hse/swt/timemanagement/img/TMS-Logo.png")));
 
+        makeDraggable(root);
+
+        mainStage.setScene(scene);
+        mainStage.show();
+    }
+
+    public static void makeDraggable(Parent root) {
         // Move the Login Screen
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -49,14 +54,12 @@ public class App extends Application {
                 mainStage.setY(e.getScreenY() - yOffset);
             }
         });
-
-        // Show the Scene
-        mainStage.setScene(scene);
-        mainStage.show();
     }
 
     static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+        Parent root = loadFXML(fxml);
+        scene.setRoot(root);
+        makeDraggable(root);
         mainStage.setWidth(1280);
         mainStage.setHeight(720);
     }

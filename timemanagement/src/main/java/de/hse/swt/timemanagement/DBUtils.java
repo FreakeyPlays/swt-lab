@@ -30,7 +30,6 @@ public class DBUtils {
             } else {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
-                    String retrievedHierarchy = resultSet.getString("hierarchy");
 
                     if (retrievedPassword.equals(password)) {
                         App.setRoot("main");
