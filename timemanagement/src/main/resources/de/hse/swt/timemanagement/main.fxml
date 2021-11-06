@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
@@ -227,6 +228,15 @@
             </Group>
          </children>
       </StackPane>
-      <Button mnemonicParsing="false" onAction="#minimize" text="_" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <FontAwesomeIconView fill="#169a2a" glyphName="MINUS" layoutX="1230.0" layoutY="30.0" onMouseClicked="#minimize" selectionFill="BLACK" size="25" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="17.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
+      <FontAwesomeIconView fill="#d01010" glyphName="CLOSE" layoutX="1260.0" layoutY="30.0" onMouseClicked="#exitAndLogout" size="25" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </FontAwesomeIconView>
    </children>
 </AnchorPane>

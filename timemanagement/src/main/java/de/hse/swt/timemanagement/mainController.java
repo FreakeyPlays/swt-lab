@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
@@ -205,7 +204,7 @@ public class mainController {
     }
 
     @FXML
-    private void exitAndLogout(ActionEvent e) {
+    private void exitAndLogout() {
         App.exit();
     }
 
