@@ -11,15 +11,15 @@ import javafx.scene.control.Alert;
 
 public class DBUtils {
 
-    public static void logInUser(String username, String password) throws IOException {
+    public static void logInUser(String email, String password) throws IOException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
-            preparedStatement = connection.prepareStatement("SELECT password, hierarchy FROM user WHERE username = ?");
-            preparedStatement.setString(1, username);
+            preparedStatement = connection.prepareStatement("SELECT password FROM user WHERE email = ?");
+            preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
