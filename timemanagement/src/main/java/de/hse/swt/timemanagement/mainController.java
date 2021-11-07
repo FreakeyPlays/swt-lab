@@ -1,9 +1,6 @@
 package de.hse.swt.timemanagement;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -100,79 +97,11 @@ public class mainController {
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
         } else {
-            Instant instant = Instant.from(localeDate.atStartOfDay(ZoneId.systemDefault()));
-            String date = Date.from(instant).toString();
-            String[] dateArr = date.split(" ");
-            String[] resultDate = new String[4];
+            String[] date = localeDate.toString().split("-");
+            String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
+            String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
 
-            switch (dateArr[0]) {
-            case "Mon":
-                resultDate[0] = "Monday, ";
-                break;
-            case "Tue":
-                resultDate[0] = "Tuesday, ";
-                break;
-            case "Wed":
-                resultDate[0] = "Wednesday, ";
-                break;
-            case "Thu":
-                resultDate[0] = "Thursday, ";
-                break;
-            case "Fri":
-                resultDate[0] = "Friday, ";
-                break;
-            case "Sat":
-                resultDate[0] = "Saturday, ";
-                break;
-            case "Sun":
-                resultDate[0] = "Sunday, ";
-                break;
-            }
-
-            resultDate[1] = dateArr[2];
-
-            switch (dateArr[1]) {
-            case "Jan":
-                resultDate[2] = ".01.";
-                break;
-            case "Feb":
-                resultDate[2] = ".02.";
-                break;
-            case "Mar":
-                resultDate[2] = ".03.";
-                break;
-            case "Apr":
-                resultDate[2] = ".04.";
-                break;
-            case "May":
-                resultDate[2] = ".05.";
-                break;
-            case "Jun":
-                resultDate[2] = ".06.";
-                break;
-            case "Jul":
-                resultDate[2] = ".07.";
-                break;
-            case "Aug":
-                resultDate[2] = ".08.";
-                break;
-            case "Sep":
-                resultDate[2] = ".09.";
-                break;
-            case "Oct":
-                resultDate[2] = ".10.";
-                break;
-            case "Nov":
-                resultDate[2] = ".11.";
-                break;
-            case "Dez":
-                resultDate[2] = ".12.";
-                break;
-            }
-
-            resultDate[3] = dateArr[5];
-
-            wktDateTxt.setText(resultDate[0] + resultDate[1] + resultDate[2] + resultDate[3]);
+            wktDateTxt.setText(weekDay + ", " + date[2] + "." + date[1] + "." + date[0]);
             wktEditBtn.setDisable(false);
             wktEditBtn.setOpacity(1);
         }
