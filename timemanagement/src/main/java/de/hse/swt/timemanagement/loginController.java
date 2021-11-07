@@ -23,7 +23,7 @@ public class loginController {
     private PasswordField pwdInput;
 
     @FXML
-    private void exit(ActionEvent e) {
+    private void exit() {
         App.exit();
     }
 
