@@ -42,6 +42,8 @@ public class DBUtils {
                     if (retrievedPassword.equals(password)) {
                         setUser(resultSet);
                         App.setRoot("main", 1280, 720);
+                        if (hierarchy.equals("SUPERVISOR"))
+                            mainController.showEmployeeInteract();
                         mainController.setNames(firstName, lastname);
                     } else {
                         System.out.println("Passwords did not match!");

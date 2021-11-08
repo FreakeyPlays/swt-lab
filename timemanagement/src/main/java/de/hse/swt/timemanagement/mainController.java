@@ -91,6 +91,7 @@ public class mainController implements Initializable {
     private static Label static_firstNameTxt;
     private static Label static_lastNameTxt;
     private static Label static_activeVacationDaysTxt;
+    private static Label static_employeeInteract;
 
     @FXML
     public void dateSelected() {
@@ -143,6 +144,11 @@ public class mainController implements Initializable {
         App.minimize();
     }
 
+    public static void showEmployeeInteract() {
+        static_employeeInteract.setDisable(false);
+        static_employeeInteract.setOpacity(1);
+    }
+
     public static void setNames(String firstName, String lastName) {
         static_firstNameTxt.setText(firstName);
         static_lastNameTxt.setText(lastName);
@@ -154,6 +160,7 @@ public class mainController implements Initializable {
         static_firstNameTxt = firstNameTxt;
         static_lastNameTxt = lastNameTxt;
         static_activeVacationDaysTxt = activeVacationDaysTxt;
+        static_employeeInteract = employeeInteract;
     }
 
 }
