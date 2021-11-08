@@ -106,13 +106,25 @@ public class mainController implements Initializable {
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
         } else {
-            String[] date = localeDate.toString().split("-");
-            String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
-            String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
 
-            wktDateTxt.setText(weekDay + ", " + date[2] + "." + date[1] + "." + date[0]);
-            wktEditBtn.setDisable(false);
-            wktEditBtn.setOpacity(1);
+            if (localeDate.isBefore(LocalDate.now().plusDays(1))) {
+                String[] date = localeDate.toString().split("-");
+                String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
+                String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
+
+                wktDateTxt.setText(weekDay + ", " + date[2] + "." + date[1] + "." + date[0]);
+                wktEditBtn.setDisable(false);
+                wktEditBtn.setOpacity(1);
+            } else {
+                String[] date = localeDate.toString().split("-");
+                String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
+                String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
+
+                wktDateTxt.setText(weekDay + ", " + date[2] + "." + date[1] + "." + date[0]);
+                wktEditBtn.setDisable(true);
+                wktEditBtn.setOpacity(0);
+            }
+
         }
     }
 
