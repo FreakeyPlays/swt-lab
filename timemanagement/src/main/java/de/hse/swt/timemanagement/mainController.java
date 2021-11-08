@@ -1,9 +1,12 @@
 package de.hse.swt.timemanagement;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -11,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class mainController {
+public class mainController implements Initializable {
 
     @FXML
     private Label activeVacationDaysTxt;
@@ -27,9 +30,6 @@ public class mainController {
 
     @FXML
     private Label editWktDateTxt;
-
-    @FXML
-    private DatePicker editWktDatePicker;
 
     @FXML
     private TextArea editWktNotesIn;
@@ -62,7 +62,7 @@ public class mainController {
     private Label vacationBtn;
 
     @FXML
-    private Label vacationBtn1;
+    private Label employeeInteract;
 
     @FXML
     private Label wktBreakTxt;
@@ -87,6 +87,10 @@ public class mainController {
 
     @FXML
     private Label worktimeBtn;
+
+    private static Label static_firstNameTxt;
+    private static Label static_lastNameTxt;
+    private static Label static_activeVacationDaysTxt;
 
     @FXML
     public void dateSelected() {
@@ -137,6 +141,19 @@ public class mainController {
     @FXML
     private void minimize() {
         App.minimize();
+    }
+
+    public static void setNames(String firstName, String lastName) {
+        static_firstNameTxt.setText(firstName);
+        static_lastNameTxt.setText(lastName);
+        static_activeVacationDaysTxt.setText(1 + " Day's");
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        static_firstNameTxt = firstNameTxt;
+        static_lastNameTxt = lastNameTxt;
+        static_activeVacationDaysTxt = activeVacationDaysTxt;
     }
 
 }

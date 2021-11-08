@@ -44,7 +44,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label fx:id="activeVacationDaysTxt" layoutY="89.0" prefHeight="32.0" prefWidth="200.0" text="12 Day's remaining">
+            <Label fx:id="activeVacationDaysTxt" layoutY="89.0" prefHeight="32.0" prefWidth="200.0" text="0 Day's remaining">
                <font>
                   <Font size="18.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label layoutY="121.0" prefHeight="30.0" prefWidth="200.0" text="Active working time:">
+            <Label layoutY="121.0" prefHeight="30.0" prefWidth="200.0" text="Active workingtime:">
                <font>
                   <Font size="14.0" />
                </font>
@@ -60,7 +60,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label fx:id="activeWorktimeTxt" layoutY="151.0" prefHeight="32.0" prefWidth="200.0" text="3h 32min 12sec">
+            <Label fx:id="activeWorktimeTxt" layoutY="151.0" prefHeight="32.0" prefWidth="200.0" text="0h 00m 00s">
                <font>
                   <Font size="18.0" />
                </font>
@@ -128,7 +128,7 @@
                   <String fx:value="active" />
                </styleClass>
             </Label>
-            <Label fx:id="vacationBtn1" disable="true" layoutY="485.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Employee interact">
+            <Label fx:id="employeeInteract" disable="true" layoutY="485.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Employee interact">
                <font>
                   <Font size="18.0" />
                </font>
@@ -150,8 +150,8 @@
          <children>
             <Group fx:id="workTimePane">
                <children>
-                  <DatePicker fx:id="wktDatePicker" onAction="#dateSelected" prefHeight="40.0" prefWidth="500.0" promptText="choose a Date" />
-                  <Label fx:id="wktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="No Date selected.">
+                  <DatePicker fx:id="wktDatePicker" onAction="#dateSelected" prefHeight="40.0" prefWidth="500.0" promptText="choose a date" />
+                  <Label fx:id="wktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="No date selected.">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
@@ -161,7 +161,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="wktTimeTxt" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="6h 54min 12sec">
+                  <Label fx:id="wktTimeTxt" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="0h 00m 00s">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -171,7 +171,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="wktBreakTxt" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="32min 12sec">
+                  <Label fx:id="wktBreakTxt" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="00m 00s">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -209,7 +209,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="editWktTimeIn" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="hh mm ss" styleClass="input">
+                  <TextField fx:id="editWktTimeIn" focusTraversable="false" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="h mm ss" styleClass="input">
                      <font>
                         <Font size="24.0" />
                      </font></TextField>
@@ -218,7 +218,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="editWktBreakIn" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="mm ss" styleClass="input">
+                  <TextField fx:id="editWktBreakIn" focusTraversable="false" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="mm ss" styleClass="input">
                      <font>
                         <Font size="24.0" />
                      </font></TextField>
@@ -227,7 +227,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="editWktNotesIn" layoutY="250.0" prefHeight="150.0" prefWidth="500.0" promptText="enter some Notes" styleClass="textArea" wrapText="true">
+                  <TextArea fx:id="editWktNotesIn" focusTraversable="false" layoutY="250.0" prefHeight="150.0" prefWidth="500.0" promptText="enter some Notes" styleClass="textArea" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font></TextArea>
