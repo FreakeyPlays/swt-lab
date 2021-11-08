@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -93,6 +94,9 @@ public class mainController implements Initializable {
     private static Label static_activeVacationDaysTxt;
     private static Label static_employeeInteract;
 
+    private static boolean isWorking;
+    private static boolean isOnBreak = false;
+
     @FXML
     public void dateSelected() {
         LocalDate localeDate = wktDatePicker.getValue();
@@ -130,13 +134,59 @@ public class mainController implements Initializable {
     }
 
     @FXML
+    private void trackWorktime() {
+        if (isWorking) {
+            if (isOnBreak) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("You are still on a Break!");
+                alert.show();
+            } else {
+                isWorking = false;
+                worktimeBtn.setText("Start Worktime");
+            }
+        } else {
+            isWorking = true;
+            worktimeBtn.setText("End Worktime");
+        }
+    }
+
+    @FXML
+    private void trackBreaktime() {
+        if (isWorking) {
+            if (isOnBreak) {
+                isOnBreak = false;
+                breakBtn.setText("Start Break");
+            } else {
+                isOnBreak = true;
+                breakBtn.setText("End Break");
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You are not Working!");
+            alert.show();
+        }
+    }
+
+    @FXML
     private void logout() throws IOException {
-        App.setRoot("login", 900, 600);
+        if (isWorking) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You are still tracking your Workingtime!");
+            alert.show();
+        } else {
+            App.setRoot("login", 900, 600);
+        }
     }
 
     @FXML
     private void exit() {
-        App.exit();
+        if (isWorking) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("You are still tracking your Workingtime!");
+            alert.show();
+        } else {
+            App.exit();
+        }
     }
 
     @FXML
