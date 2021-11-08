@@ -70,7 +70,6 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         Parent root = loadFXML(fxml);
         scene.setRoot(root);
-        scene.setFill(Color.TRANSPARENT);
         makeDraggable(root);
         mainStage.setWidth(1280);
         mainStage.setHeight(720);

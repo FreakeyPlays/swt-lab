@@ -43,6 +43,9 @@ public class DBUtils {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No connection!");
+            alert.show();
         } finally {
             if (resultSet != null) {
                 try {
