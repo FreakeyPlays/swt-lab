@@ -1,11 +1,17 @@
+.window {
+  -fx-background-radius: 16px 16px 16px 16px;
+}
+
 /*##### Login-Page #####*/
 
 .loginLeftBG {
   -fx-background-color: #536df3;
+  -fx-background-radius: 16px 0 0 16px;
 }
 
 .loginRightBG {
   -fx-background-color: #fff;
+  -fx-background-radius: 0 16px 16px 0;
 }
 
 .loginBtn {
@@ -45,6 +51,11 @@
 }
 
 /*##### Main Page #####*/
+
+.mainMenu {
+  -fx-background-color: lightgrey;
+  -fx-background-radius: 16px 0 0 16px;
+}
 
 /*Menu Bar*/
 .menuBtn {

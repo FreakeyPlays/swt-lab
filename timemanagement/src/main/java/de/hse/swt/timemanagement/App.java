@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,7 +31,8 @@ public class App extends Application {
         Parent root = loadFXML("login");
         scene = new Scene(root);
         mainStage.setTitle("Time Managment System");
-        mainStage.initStyle(StageStyle.UNDECORATED);
+        scene.setFill(Color.TRANSPARENT);
+        mainStage.initStyle(StageStyle.TRANSPARENT);
         stage.getIcons().add(new Image(App.class.getResourceAsStream("/de/hse/swt/timemanagement/img/TMS-Logo.png")));
 
         makeDraggable(root);
@@ -68,6 +70,7 @@ public class App extends Application {
     static void setRoot(String fxml) throws IOException {
         Parent root = loadFXML(fxml);
         scene.setRoot(root);
+        scene.setFill(Color.TRANSPARENT);
         makeDraggable(root);
         mainStage.setWidth(1280);
         mainStage.setHeight(720);
