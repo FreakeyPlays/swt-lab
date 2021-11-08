@@ -5,10 +5,12 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -35,6 +37,7 @@ public class App extends Application {
 
         mainStage.setScene(scene);
         mainStage.show();
+        centerWindow();
     }
 
     public static void makeDraggable(Parent root) {
@@ -56,12 +59,19 @@ public class App extends Application {
         });
     }
 
+    public static void centerWindow() {
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        mainStage.setX((primScreenBounds.getWidth() - mainStage.getWidth()) / 2);
+        mainStage.setY((primScreenBounds.getHeight() - mainStage.getHeight()) / 2);
+    }
+
     static void setRoot(String fxml) throws IOException {
         Parent root = loadFXML(fxml);
         scene.setRoot(root);
         makeDraggable(root);
         mainStage.setWidth(1280);
         mainStage.setHeight(720);
+        centerWindow();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {
