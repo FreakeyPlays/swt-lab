@@ -17,12 +17,12 @@
    <children>
       <Pane layoutX="648.0" layoutY="39.0" prefHeight="600.0" prefWidth="450.0" styleClass="loginRightBG" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="usrInput" layoutX="100.0" layoutY="258.0" prefHeight="40.0" prefWidth="250.0" promptText="Username" styleClass="inputUSR" stylesheets="@style.css">
+            <TextField fx:id="usrInput" focusTraversable="false" layoutX="100.0" layoutY="258.0" prefHeight="40.0" prefWidth="250.0" promptText="E-Mail" styleClass="inputUSR" stylesheets="@style.css">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="pwdInput" layoutX="100.0" layoutY="318.0" onAction="#login" prefHeight="40.0" prefWidth="250.0" promptText="Password" styleClass="inputPWD" stylesheets="@style.css">
+            <PasswordField fx:id="pwdInput" focusTraversable="false" layoutX="100.0" layoutY="318.0" onAction="#login" prefHeight="40.0" prefWidth="250.0" promptText="Password" styleClass="inputPWD" stylesheets="@style.css">
                <font>
                   <Font size="16.0" />
                </font>
