@@ -20,7 +20,7 @@
    <children>
       <Pane prefHeight="720.0" prefWidth="200.0" styleClass="mainMenu" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label fx:id="firstNameTxt" prefHeight="32.0" prefWidth="200.0" styleClass="test" text="First Name">
+            <Label fx:id="firstNameTxt" prefHeight="32.0" prefWidth="200.0" text="First Name">
                <font>
                   <Font size="18.0" />
                </font>
@@ -139,7 +139,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#exitAndLogout" prefHeight="25.0" prefWidth="75.0" styleClass="logoutBtn" text="Logout">
+            <Button fx:id="logoutBtn" layoutX="63.0" layoutY="681.0" mnemonicParsing="false" onAction="#logout" prefHeight="25.0" prefWidth="75.0" styleClass="btn" text="Logout">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -186,16 +186,19 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="wktEditBtn" disable="true" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#editWorktime" opacity="0.0" prefHeight="40.0" prefWidth="75.0" text="Edit">
+                  <Button fx:id="wktEditBtn" disable="true" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#editWorktime" opacity="0.0" prefHeight="40.0" prefWidth="75.0" styleClass="btn" text="Edit">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </Button>
                </children>
             </Group>
             <Group fx:id="editWorkTimePane" disable="true" layoutX="300.0" layoutY="140.0" opacity="0.0">
                <children>
-                  <Pane prefHeight="41.0" prefWidth="500.0" />
+                  <Pane prefHeight="41.0" prefWidth="500.0" styleClass="test" />
                   <Label fx:id="editWktDateTxt" layoutY="60.0" prefHeight="40.0" prefWidth="500.0" text="Monday, 11.12.2021">
                      <font>
                         <Font name="System Bold" size="24.0" />
@@ -206,34 +209,46 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="editWktTimeIn" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" />
+                  <TextField fx:id="editWktTimeIn" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="hh mm ss" styleClass="input">
+                     <font>
+                        <Font size="24.0" />
+                     </font></TextField>
                   <Label layoutX="250.0" layoutY="120.0" prefHeight="30.0" prefWidth="250.0" text="Breaktime">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="editWktBreakIn" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" />
+                  <TextField fx:id="editWktBreakIn" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0" promptText="mm ss" styleClass="input">
+                     <font>
+                        <Font size="24.0" />
+                     </font></TextField>
                   <Label layoutY="220.0" prefHeight="30.0" text="Notes">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextArea fx:id="editWktNotesIn" layoutY="250.0" prefHeight="150.0" prefWidth="500.0" />
-                  <Button fx:id="editWktSaveBtn" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveWorktime" prefHeight="40.0" prefWidth="75.0" text="Save">
+                  <TextArea fx:id="editWktNotesIn" layoutY="250.0" prefHeight="150.0" prefWidth="500.0" promptText="enter some Notes" styleClass="textArea" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font></TextArea>
+                  <Button fx:id="editWktSaveBtn" layoutX="210.0" layoutY="420.0" mnemonicParsing="false" onAction="#saveWorktime" prefHeight="40.0" prefWidth="75.0" styleClass="btn" text="Save">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
                   </Button>
                </children>
             </Group>
          </children>
       </StackPane>
-      <FontAwesomeIconView fill="#169a2a" glyphName="MINUS" layoutX="1230.0" layoutY="30.0" onMouseClicked="#minimize" selectionFill="BLACK" size="25" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="12.0">
+      <FontAwesomeIconView fill="#536df3" glyphName="MINUS" layoutX="1230.0" layoutY="30.0" onMouseClicked="#minimize" selectionFill="BLACK" size="25" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="12.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </FontAwesomeIconView>
-      <FontAwesomeIconView fill="#d01010" glyphName="CLOSE" layoutX="1260.0" layoutY="30.0" onMouseClicked="#exitAndLogout" size="25" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <FontAwesomeIconView fill="#536df3" glyphName="CLOSE" layoutX="1260.0" layoutY="30.0" onMouseClicked="#exit" size="25" styleClass="input" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

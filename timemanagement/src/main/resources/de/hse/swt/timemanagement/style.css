@@ -2,6 +2,42 @@
   -fx-background-radius: 16px 16px 16px 16px;
 }
 
+.btn {
+  -fx-background-color: transparent;
+  -fx-border-color: #000;
+  -fx-border-width: 2px;
+  -fx-border-radius: 8px;
+}
+
+.btn:hover {
+  -fx-background-color: #536df3;
+  -fx-background-radius: 10px;
+  -fx-text-fill: #fff;
+}
+
+.input {
+  -fx-background-color: #ececec;
+  -fx-background-radius: 4px 4px 0 0;
+  -fx-border-width: 0 0 2px 0;
+  -fx-border-color: #536df3;
+}
+
+.textArea {
+  -fx-background-color: transparent;
+}
+
+.textArea .content {
+  -fx-background-radius: 4px 4px 0 0;
+  -fx-background-color: #ececec;
+  -fx-border-width: 0 0 2px 0;
+  -fx-border-color: #536df3;
+}
+
+.textArea .scroll-bar:vertical {
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
+}
+
 /*##### Login-Page #####*/
 
 .loginLeftBG {
@@ -14,47 +50,12 @@
   -fx-background-radius: 0 16px 16px 0;
 }
 
-.loginBtn {
-  -fx-background-color: transparent;
-  -fx-border-color: black;
-  -fx-border-width: 2px;
-  -fx-border-radius: 8px;
-}
-
-.loginBtn:hover {
-  -fx-background-color: lightgrey;
-  -fx-background-radius: 8px;
-}
-
-.loginBtn:pressed {
-  -fx-background-color: grey;
-}
-
-.inputUSR,
-.inputPWD {
-  -fx-background-color: transparent;
-  -fx-border-width: 0 0 2px 0;
-  -fx-border-color: #536df3;
-}
-
-.loginExit {
-  -fx-background-color: transparent;
-  -fx-padding: 0 10px;
-}
-
-.loginExit:hover {
-  -fx-background-color: lightgrey;
-}
-
-.loginExit:pressed {
-  -fx-background-color: grey;
-}
-
 /*##### Main Page #####*/
 
 .mainMenu {
-  -fx-background-color: lightgrey;
+  -fx-background-color: #d7d7d9;
   -fx-background-radius: 16px 0 0 16px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 7, 0);
 }
 
 /*Menu Bar*/
@@ -66,24 +67,10 @@
   -fx-background-color: #657ef8;
 }
 
-.menuBtn:active {
-  -fx-background-color: #000;
-}
-
 .active {
   -fx-background-color: #536df3;
 }
 
-.logoutBtn {
-  -fx-background-color: transparent;
-  -fx-border-color: #000;
-  -fx-border-width: 2px;
-  -fx-border-radius: 8px;
-}
-
-.test {
-  -fx-font-family: "Inter";
-}
 /*Worktime Window*/
 
 /*FlexTime Window*/

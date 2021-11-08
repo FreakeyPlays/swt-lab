@@ -1,10 +1,10 @@
 package de.hse.swt.timemanagement;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -109,19 +109,11 @@ public class mainController {
 
     @FXML
     private void editWorktime() {
-        LocalDate localeDate = wktDatePicker.getValue();
-        if (localeDate == null) {
-            System.out.println("No Date selected!");
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("There was no Date selected.");
-            alert.show();
-        } else {
-            editWktDateTxt.setText(wktDateTxt.getText());
-            workTimePane.setDisable(true);
-            workTimePane.setOpacity(0);
-            editWorkTimePane.setDisable(false);
-            editWorkTimePane.setOpacity(1);
-        }
+        editWktDateTxt.setText(wktDateTxt.getText());
+        workTimePane.setDisable(true);
+        workTimePane.setOpacity(0);
+        editWorkTimePane.setDisable(false);
+        editWorkTimePane.setOpacity(1);
     }
 
     @FXML
@@ -133,7 +125,12 @@ public class mainController {
     }
 
     @FXML
-    private void exitAndLogout() {
+    private void logout() throws IOException {
+        App.setRoot("login", 900, 600);
+    }
+
+    @FXML
+    private void exit() {
         App.exit();
     }
 

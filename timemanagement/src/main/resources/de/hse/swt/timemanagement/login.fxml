@@ -17,32 +17,28 @@
    <children>
       <Pane layoutX="648.0" layoutY="39.0" prefHeight="600.0" prefWidth="450.0" styleClass="loginRightBG" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TextField fx:id="usrInput" focusTraversable="false" layoutX="100.0" layoutY="258.0" prefHeight="40.0" prefWidth="250.0" promptText="E-Mail" styleClass="inputUSR" stylesheets="@style.css">
+            <TextField fx:id="usrInput" focusTraversable="false" layoutX="100.0" layoutY="258.0" prefHeight="40.0" prefWidth="250.0" promptText="E-Mail" styleClass="input" stylesheets="@style.css">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="pwdInput" focusTraversable="false" layoutX="100.0" layoutY="318.0" onAction="#login" prefHeight="40.0" prefWidth="250.0" promptText="Password" styleClass="inputPWD" stylesheets="@style.css">
+            <PasswordField fx:id="pwdInput" focusTraversable="false" layoutX="100.0" layoutY="318.0" onAction="#login" prefHeight="40.0" prefWidth="250.0" promptText="Password" styleClass="input" stylesheets="@style.css">
                <font>
                   <Font size="16.0" />
                </font>
             </PasswordField>
-            <Button fx:id="loginBtn" layoutX="188.0" layoutY="378.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="75.0" styleClass="loginBtn" stylesheets="@style.css" text="Login">
+            <Button fx:id="loginBtn" layoutX="188.0" layoutY="378.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="75.0" styleClass="btn" stylesheets="@style.css" text="Login">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Hyperlink layoutX="14.0" layoutY="563.0" onAction="#mailTo" text="Somthing went wrong?" />
-            <Label layoutX="408.0" layoutY="567.0" text="v 1.0">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
+            <Label layoutX="408.0" layoutY="567.0" text="v 1.0" />
             <Label layoutX="164.0" layoutY="192.0" prefHeight="35.0" prefWidth="122.0" text="User Login" textFill="#536df3">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <FontAwesomeIconView fill="#536df3" glyphName="CLOSE" layoutX="413.0" layoutY="35.0" onMouseClicked="#exit" size="25">
+            <FontAwesomeIconView fill="#536df3" glyphName="CLOSE" layoutX="413.0" layoutY="35.0" onMouseClicked="#exit" size="25" styleClass="test">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

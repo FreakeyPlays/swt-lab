@@ -67,13 +67,15 @@ public class App extends Application {
         mainStage.setY((primScreenBounds.getHeight() - mainStage.getHeight()) / 2);
     }
 
-    static void setRoot(String fxml) throws IOException {
+    static void setRoot(String fxml, int witdh, int height) throws IOException {
+        mainStage.close();
         Parent root = loadFXML(fxml);
         scene.setRoot(root);
         makeDraggable(root);
-        mainStage.setWidth(1280);
-        mainStage.setHeight(720);
+        mainStage.setWidth(witdh);
+        mainStage.setHeight(height);
         centerWindow();
+        mainStage.show();
     }
 
     private static Parent loadFXML(String fxml) throws IOException {

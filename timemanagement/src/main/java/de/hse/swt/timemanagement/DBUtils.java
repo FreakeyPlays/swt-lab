@@ -23,16 +23,16 @@ public class DBUtils {
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
-                System.out.println("User not found in database!");
+                System.out.println("User not found in the database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Provided credentials are incorrect!");
+                alert.setContentText("The provided credentials are incorrect!");
                 alert.show();
             } else {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
 
                     if (retrievedPassword.equals(password)) {
-                        App.setRoot("main");
+                        App.setRoot("main", 1280, 720);
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -44,7 +44,7 @@ public class DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("No connection!");
+            alert.setContentText("No connection to the Database!");
             alert.show();
         } finally {
             if (resultSet != null) {
