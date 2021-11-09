@@ -147,7 +147,7 @@ public class mainController implements Initializable {
         LocalDate localeDate = wktDatePicker.getValue();
         selectedDate = localeDate;
         
-        //Query if month/year equal to current month/year
+        //Query if selected month/year equal to current month/year
         boolean monthQuery = currentMonth.getMonth() == localeDate.getMonth();
         boolean yearQuery = currentMonth.getYear() == localeDate.getYear();
         
