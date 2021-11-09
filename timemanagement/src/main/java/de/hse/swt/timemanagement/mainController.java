@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -171,7 +172,13 @@ public class mainController implements Initializable {
                 alert.show();
             } else {
                 isWorking = false;
-                worktimeBtn.setText("Start Worktime");
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do yout really want to End your Worktime?",
+                        ButtonType.YES, ButtonType.NO);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES) {
+                    worktimeBtn.setText("Start Worktime");
+                }
             }
         } else {
             isWorking = true;
