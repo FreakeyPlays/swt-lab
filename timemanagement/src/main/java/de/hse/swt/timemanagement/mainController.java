@@ -143,17 +143,23 @@ public class mainController implements Initializable {
 
     @FXML
     public void dateSelected() throws IOException {
+    	LocalDate currentMonth = LocalDate.now();     
         LocalDate localeDate = wktDatePicker.getValue();
         selectedDate = localeDate;
-
+        
+        //Query if month/year equal to current month/year
+        boolean monthQuery = currentMonth.getMonth() == localeDate.getMonth();
+        boolean yearQuery = currentMonth.getYear() == localeDate.getYear();
+        
         if (localeDate == null) {
             wktDateTxt.setText("No Date selected.");
             setTimes("00:00:00", "00:00:00");
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
+            
         } else {
 
-            if (localeDate.isBefore(LocalDate.now().plusDays(1))) {
+            if (localeDate.isBefore(LocalDate.now().plusDays(1)) && monthQuery && yearQuery) {
                 String[] date = localeDate.toString().split("-");
                 String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
                 String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
