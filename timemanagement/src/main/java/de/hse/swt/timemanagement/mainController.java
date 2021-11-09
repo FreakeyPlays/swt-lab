@@ -25,6 +25,33 @@ public class mainController implements Initializable {
     private Label activeWorktimeTxt;
 
     @FXML
+    private Label addUserMenuBtn;
+
+    @FXML
+    private Group addUserPane;
+
+    @FXML
+    private Button addUsrBtn;
+
+    @FXML
+    private TextField addUsrEMail;
+
+    @FXML
+    private TextField addUsrFirstName;
+
+    @FXML
+    private TextField addUsrGrpId;
+
+    @FXML
+    private TextField addUsrHier;
+
+    @FXML
+    private TextField addUsrLastName;
+
+    @FXML
+    private TextField addUsrPwd;
+
+    @FXML
     private Label breakBtn;
 
     @FXML
@@ -49,10 +76,7 @@ public class mainController implements Initializable {
     private Label firstNameTxt;
 
     @FXML
-    private Label flexTimeBtn;
-
-    @FXML
-    private Label flexTimeBtn1;
+    private Label flexTimeMenuBtn;
 
     @FXML
     private Label lastNameTxt;
@@ -61,10 +85,22 @@ public class mainController implements Initializable {
     private Button logoutBtn;
 
     @FXML
-    private Label vacationBtn;
+    private TextField removeUserFirstName;
 
     @FXML
-    private Label employeeInteract;
+    private Button removeUsrBtn;
+
+    @FXML
+    private TextField removeUsrEMail;
+
+    @FXML
+    private TextField removeUsrLastName;
+
+    @FXML
+    private Label userInfoMenuBtn;
+
+    @FXML
+    private Label vacationMenuBtn;
 
     @FXML
     private Label wktBreakTxt;
@@ -85,6 +121,9 @@ public class mainController implements Initializable {
     private Label wktTimeTxt;
 
     @FXML
+    private Label workTimeMenuBtn;
+
+    @FXML
     private Group workTimePane;
 
     @FXML
@@ -93,7 +132,8 @@ public class mainController implements Initializable {
     private static Label static_firstNameTxt;
     private static Label static_lastNameTxt;
     private static Label static_activeVacationDaysTxt;
-    private static Label static_employeeInteract;
+    private static Label static_addUserMenuBtn;
+    private static Label static_userInfoMenuBtn;
     private static Label static_wktTimeTxt;
     private static Label static_wktBreakTxt;
 
@@ -230,9 +270,11 @@ public class mainController implements Initializable {
         App.minimize();
     }
 
-    public static void showEmployeeInteract() {
-        static_employeeInteract.setDisable(false);
-        static_employeeInteract.setOpacity(1);
+    public static void showSupervisorMenu() {
+        static_addUserMenuBtn.setDisable(false);
+        static_addUserMenuBtn.setOpacity(1);
+        static_userInfoMenuBtn.setDisable(false);
+        static_userInfoMenuBtn.setOpacity(1);
     }
 
     public static void setNames(String firstName, String lastName, int vacDays) {
@@ -263,7 +305,8 @@ public class mainController implements Initializable {
         static_firstNameTxt = firstNameTxt;
         static_lastNameTxt = lastNameTxt;
         static_activeVacationDaysTxt = activeVacationDaysTxt;
-        static_employeeInteract = employeeInteract;
+        static_addUserMenuBtn = addUserMenuBtn;
+        static_userInfoMenuBtn = userInfoMenuBtn;
         static_wktTimeTxt = wktTimeTxt;
         static_wktBreakTxt = wktBreakTxt;
     }

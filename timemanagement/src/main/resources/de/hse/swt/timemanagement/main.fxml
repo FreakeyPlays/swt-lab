@@ -91,7 +91,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="flexTimeBtn" layoutY="385.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Flex Time">
+            <Label fx:id="flexTimeMenuBtn" layoutY="385.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Flex Time">
                <font>
                   <Font size="18.0" />
                </font>
@@ -102,7 +102,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="vacationBtn" layoutY="435.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Vacation booking">
+            <Label fx:id="vacationMenuBtn" layoutY="435.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Vacation booking">
                <font>
                   <Font size="18.0" />
                </font>
@@ -113,7 +113,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="flexTimeBtn1" layoutY="335.0" prefHeight="50.0" prefWidth="200.0" text="Worktime">
+            <Label fx:id="workTimeMenuBtn" layoutY="335.0" prefHeight="50.0" prefWidth="200.0" text="Worktime">
                <font>
                   <Font size="18.0" />
                </font>
@@ -128,7 +128,7 @@
                   <String fx:value="active" />
                </styleClass>
             </Label>
-            <Label fx:id="employeeInteract" disable="true" layoutY="485.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Employee interact">
+            <Label fx:id="addUserMenuBtn" disable="true" layoutY="485.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Add/Remove User">
                <font>
                   <Font size="18.0" />
                </font>
@@ -144,6 +144,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Label fx:id="userInfoMenuBtn" disable="true" layoutY="535.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="User Info">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
          </children>
       </Pane>
       <StackPane layoutX="201.0" layoutY="-3.0" prefHeight="726.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -239,6 +250,82 @@
                         <Font size="16.0" />
                      </font>
                   </Button>
+               </children>
+            </Group>
+            <Group fx:id="addUserPane" disable="true" layoutX="300.0" layoutY="140.0" opacity="0.0">
+               <children>
+                  <TextField fx:id="addUsrFirstName" layoutY="79.0" prefHeight="40.0" prefWidth="300.0" promptText="First Name" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addUsrLastName" layoutY="129.0" prefHeight="40.0" prefWidth="300.0" promptText="Last Name" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addUsrEMail" layoutY="179.0" prefHeight="40.0" prefWidth="300.0" promptText="E-Mail" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addUsrPwd" layoutY="229.0" prefHeight="40.0" prefWidth="300.0" promptText="Password" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addUsrHier" layoutY="279.0" prefHeight="40.0" prefWidth="300.0" promptText="Hierarchy" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="addUsrGrpId" layoutY="329.0" prefHeight="40.0" prefWidth="300.0" promptText="Group ID" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="101.0" layoutY="32.0" text="Add User">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="addUsrBtn" layoutX="200.0" layoutY="391.0" mnemonicParsing="false" prefWidth="100.0" styleClass="btn" text="Add User">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="removeUsrBtn" layoutX="650.0" layoutY="310.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="150.0" styleClass="btn" text="Remove user">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="580.0" layoutY="103.0" text="Remove User">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="removeUserFirstName" layoutX="500.0" layoutY="150.0" prefHeight="40.0" prefWidth="300.0" promptText="First Name" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="removeUsrLastName" layoutX="500.0" layoutY="200.0" prefHeight="40.0" prefWidth="300.0" promptText="Last Name" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField fx:id="removeUsrEMail" layoutX="500.0" layoutY="250.0" prefHeight="40.0" prefWidth="300.0" promptText="E-Mail" styleClass="input">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Line endX="-25.0" endY="280.0" layoutX="423.0" layoutY="133.0" startX="-25.0" startY="-80.0" />
                </children>
             </Group>
          </children>

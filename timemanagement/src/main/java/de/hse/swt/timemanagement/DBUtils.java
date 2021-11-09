@@ -45,7 +45,7 @@ public class DBUtils {
                         setUser(resultSet);
                         App.setRoot("main", 1280, 720);
                         if (hierarchy.equals("supervisor"))
-                            mainController.showEmployeeInteract();
+                            mainController.showSupervisorMenu();
                         mainController.setNames(firstName, lastname, vacDays);
                     } else {
                         System.out.println("Passwords did not match!");
