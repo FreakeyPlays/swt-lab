@@ -143,20 +143,27 @@ public class mainController implements Initializable {
 
     @FXML
     public void dateSelected() throws IOException {
-    	LocalDate currentMonth = LocalDate.now();     
+        LocalDate currentMonth = LocalDate.now();
         LocalDate localeDate = wktDatePicker.getValue();
         selectedDate = localeDate;
+<<<<<<< HEAD
         
         //Query if selected month/year equal to current month/year
         boolean monthQuery = currentMonth.getMonth() == localeDate.getMonth();
         boolean yearQuery = currentMonth.getYear() == localeDate.getYear();
         
+=======
+
+        // Query if month/year equal to current month/year
+        boolean monthQuery = currentMonth.getMonth() == selectedDate.getMonth();
+        boolean yearQuery = currentMonth.getYear() == selectedDate.getYear();
+
+>>>>>>> branch 'dev' of https://gitlab.hs-esslingen.de/chmeit02/swt-tms.git
         if (localeDate == null) {
             wktDateTxt.setText("No Date selected.");
             setTimes("00:00:00", "00:00:00");
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
-            
         } else {
 
             if (localeDate.isBefore(LocalDate.now().plusDays(1)) && monthQuery && yearQuery) {
