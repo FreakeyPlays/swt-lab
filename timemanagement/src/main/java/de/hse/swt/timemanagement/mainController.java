@@ -105,15 +105,17 @@ public class mainController implements Initializable {
     public void dateSelected() throws IOException {
         LocalDate localeDate = wktDatePicker.getValue();
         selectedDate = localeDate;
-
+        LocalDate currentMonth = LocalDate.now();     
+        
         if (localeDate == null) {
             wktDateTxt.setText("No Date selected.");
             setTimes("00:00:00", "00:00:00");
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
+            
         } else {
 
-            if (localeDate.isBefore(LocalDate.now().plusDays(1))) {
+            if (localeDate.isBefore(LocalDate.now().plusDays(1)) && currentMonth.getMonth() == localeDate.getMonth()) {
                 String[] date = localeDate.toString().split("-");
                 String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
                 String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
