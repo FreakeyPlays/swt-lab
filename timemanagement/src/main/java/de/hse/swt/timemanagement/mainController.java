@@ -103,9 +103,9 @@ public class mainController implements Initializable {
 
     @FXML
     public void dateSelected() throws IOException {
+    	LocalDate currentMonth = LocalDate.now();     
         LocalDate localeDate = wktDatePicker.getValue();
         selectedDate = localeDate;
-        LocalDate currentMonth = LocalDate.now();     
         
         if (localeDate == null) {
             wktDateTxt.setText("No Date selected.");
