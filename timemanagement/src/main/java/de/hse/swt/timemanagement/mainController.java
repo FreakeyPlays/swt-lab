@@ -211,10 +211,10 @@ public class mainController implements Initializable {
         static_employeeInteract.setOpacity(1);
     }
 
-    public static void setNames(String firstName, String lastName) {
+    public static void setNames(String firstName, String lastName, int vacDays) {
         static_firstNameTxt.setText(firstName);
         static_lastNameTxt.setText(lastName);
-        static_activeVacationDaysTxt.setText(1 + " Day's");
+        static_activeVacationDaysTxt.setText(vacDays + " Day's");
     }
 
     @Override

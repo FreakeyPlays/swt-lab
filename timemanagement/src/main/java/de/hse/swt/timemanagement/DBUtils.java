@@ -26,7 +26,7 @@ public class DBUtils {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
             preparedStatement = connection.prepareStatement(
-                    "SELECT id, firstName, lastName, password, email, hierarchy, GroupId FROM user WHERE email = ?");
+                    "SELECT id, firstName, lastName, email, password, vacationdays, hierarchy, groupid FROM user WHERE email = ?");
             preparedStatement.setString(1, email);
             resultSet = preparedStatement.executeQuery();
 
@@ -44,7 +44,7 @@ public class DBUtils {
                         App.setRoot("main", 1280, 720);
                         if (hierarchy.equals("SUPERVISOR"))
                             mainController.showEmployeeInteract();
-                        mainController.setNames(firstName, lastname);
+                        mainController.setNames(firstName, lastname, vacDays);
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -90,6 +90,7 @@ public class DBUtils {
         firstName = resultset.getString("firstName");
         lastname = resultset.getString("lastName");
         eMail = resultset.getString("email");
+        vacDays = resultset.getInt("vacationdays");
         hierarchy = resultset.getString("hierarchy");
         groupId = resultset.getInt("GroupId");
     }
