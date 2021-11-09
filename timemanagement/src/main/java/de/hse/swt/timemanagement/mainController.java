@@ -93,16 +93,21 @@ public class mainController implements Initializable {
     private static Label static_lastNameTxt;
     private static Label static_activeVacationDaysTxt;
     private static Label static_employeeInteract;
+    private static Label static_wktTimeTxt;
+    private static Label static_wktBreakTxt;
 
     private static boolean isWorking;
     private static boolean isOnBreak = false;
+    private static LocalDate selectedDate;
 
     @FXML
-    public void dateSelected() {
+    public void dateSelected() throws IOException {
         LocalDate localeDate = wktDatePicker.getValue();
+        selectedDate = localeDate;
 
         if (localeDate == null) {
             wktDateTxt.setText("No Date selected.");
+            setTimes("00:00:00", "00:00:00");
             wktEditBtn.setDisable(true);
             wktEditBtn.setOpacity(0);
         } else {
@@ -111,6 +116,8 @@ public class mainController implements Initializable {
                 String[] date = localeDate.toString().split("-");
                 String weekDayUppercase = localeDate.getDayOfWeek().toString().toLowerCase();
                 String weekDay = weekDayUppercase.substring(0, 1).toUpperCase() + weekDayUppercase.substring(1);
+
+                DBUtils.getDataOfDate(localeDate);
 
                 wktDateTxt.setText(weekDay + ", " + date[2] + "." + date[1] + "." + date[0]);
                 wktEditBtn.setDisable(false);
@@ -131,6 +138,13 @@ public class mainController implements Initializable {
     @FXML
     private void editWorktime() {
         editWktDateTxt.setText(wktDateTxt.getText());
+
+        String worktime = wktTimeTxt.getText();
+        String breaktime = wktBreakTxt.getText();
+
+        editWktTimeIn.setText(worktime);
+        editWktBreakIn.setText(breaktime);
+
         workTimePane.setDisable(true);
         workTimePane.setOpacity(0);
         editWorkTimePane.setDisable(false);
@@ -139,6 +153,9 @@ public class mainController implements Initializable {
 
     @FXML
     private void saveWorktime() {
+        String newWorkTime = editWktTimeIn.getText();
+        String newBreakTime = editWktBreakIn.getText();
+        DBUtils.compareData(selectedDate, codeTimeFormat(newWorkTime), codeTimeFormat(newBreakTime));
         editWorkTimePane.setDisable(true);
         editWorkTimePane.setOpacity(0);
         workTimePane.setDisable(false);
@@ -217,12 +234,31 @@ public class mainController implements Initializable {
         static_activeVacationDaysTxt.setText(vacDays + " Day's");
     }
 
+    public static void setTimes(String worktime, String breaktime) {
+        static_wktTimeTxt.setText(displayTimeFormat(worktime));
+        static_wktBreakTxt.setText(displayTimeFormat(breaktime));
+    }
+
+    private static String displayTimeFormat(String time) {
+        String[] arr = time.split(":");
+        String formatted = arr[0] + "h " + arr[1] + "m " + arr[2] + "s";
+        return formatted;
+    }
+
+    private static String codeTimeFormat(String time) {
+        String[] arr = time.split("[hms][ ]?");
+        String formatted = arr[0] + ":" + arr[1] + ":" + arr[2];
+        return formatted;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         static_firstNameTxt = firstNameTxt;
         static_lastNameTxt = lastNameTxt;
         static_activeVacationDaysTxt = activeVacationDaysTxt;
         static_employeeInteract = employeeInteract;
+        static_wktTimeTxt = wktTimeTxt;
+        static_wktBreakTxt = wktBreakTxt;
     }
 
 }
