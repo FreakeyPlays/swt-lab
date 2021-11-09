@@ -91,7 +91,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="flexTimeMenuBtn" layoutY="385.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Flex Time">
+            <Label fx:id="flexTimeMenuBtn" layoutY="385.0" onMouseClicked="#showFlexTime" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Flex Time">
                <font>
                   <Font size="18.0" />
                </font>
@@ -102,7 +102,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="vacationMenuBtn" layoutY="435.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Vacation booking">
+            <Label fx:id="vacationMenuBtn" layoutY="435.0" onMouseClicked="#showVacation" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Vacation booking">
                <font>
                   <Font size="18.0" />
                </font>
@@ -113,7 +113,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Label>
-            <Label fx:id="workTimeMenuBtn" layoutY="335.0" prefHeight="50.0" prefWidth="200.0" text="Worktime">
+            <Label fx:id="workTimeMenuBtn" layoutY="335.0" onMouseClicked="#showWorktime" prefHeight="50.0" prefWidth="200.0" text="Worktime">
                <font>
                   <Font size="18.0" />
                </font>
@@ -128,7 +128,18 @@
                   <String fx:value="active" />
                </styleClass>
             </Label>
-            <Label fx:id="addUserMenuBtn" disable="true" layoutY="485.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Add/Remove User">
+            <Label fx:id="addUserMenuBtn" disable="true" layoutY="485.0" onMouseClicked="#showAddUser" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="Add/Remove User">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <padding>
+                  <Insets left="15.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="userInfoMenuBtn" disable="true" layoutY="535.0" onMouseClicked="#showUserInfo" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="User Info">
                <font>
                   <Font size="18.0" />
                </font>
@@ -144,17 +155,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="userInfoMenuBtn" disable="true" layoutY="535.0" opacity="0.0" prefHeight="50.0" prefWidth="200.0" styleClass="menuBtn" text="User Info">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <padding>
-                  <Insets left="15.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Label>
          </children>
       </Pane>
       <StackPane layoutX="201.0" layoutY="-3.0" prefHeight="726.0" prefWidth="1080.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

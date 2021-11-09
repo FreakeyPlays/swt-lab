@@ -275,6 +275,67 @@ public class mainController implements Initializable {
         App.minimize();
     }
 
+    @FXML
+    private void showWorktime() {
+        if (editWorkTimePane.isDisabled()) {
+            disableAllPanes();
+
+            workTimeMenuBtn.getStyleClass().add("active");
+            workTimePane.setDisable(false);
+            workTimePane.setOpacity(1);
+        }
+    }
+
+    @FXML
+    private void showFlexTime() {
+        if (editWorkTimePane.isDisable()) {
+            disableAllPanes();
+
+            flexTimeMenuBtn.getStyleClass().add("active");
+        }
+    }
+
+    @FXML
+    private void showVacation() {
+        if (editWorkTimePane.isDisable()) {
+            disableAllPanes();
+
+            vacationMenuBtn.getStyleClass().add("active");
+        }
+    }
+
+    @FXML
+    private void showAddUser() {
+        if (editWorkTimePane.isDisable()) {
+            disableAllPanes();
+
+            addUserMenuBtn.getStyleClass().add("active");
+            addUserPane.setDisable(false);
+            addUserPane.setOpacity(1);
+        }
+    }
+
+    @FXML
+    private void showUserInfo() {
+        if (editWorkTimePane.isDisable()) {
+            disableAllPanes();
+
+            userInfoMenuBtn.getStyleClass().add("active");
+        }
+    }
+
+    public void disableAllPanes() {
+        workTimeMenuBtn.getStyleClass().remove("active");
+        workTimePane.setDisable(true);
+        workTimePane.setOpacity(0);
+        addUserMenuBtn.getStyleClass().remove("active");
+        addUserPane.setDisable(true);
+        addUserPane.setOpacity(0);
+        flexTimeMenuBtn.getStyleClass().remove("active");
+        vacationMenuBtn.getStyleClass().remove("active");
+        userInfoMenuBtn.getStyleClass().remove("active");
+    }
+
     public static void showSupervisorMenu() {
         static_addUserMenuBtn.setDisable(false);
         static_addUserMenuBtn.setOpacity(1);
