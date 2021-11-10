@@ -71,6 +71,15 @@
   -fx-background-color: #536df3;
 }
 
+.input:error {
+  -fx-background-color: rgb(245, 160, 160);
+  -fx-border-color: red;
+}
+.input:focused:correct {
+  -fx-background-color: rgb(161, 214, 161);
+  -fx-border-color: green;
+}
+
 /*Worktime Window*/
 
 /*FlexTime Window*/

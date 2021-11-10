@@ -3,14 +3,18 @@ package de.hse.swt.timemanagement;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.awt.Desktop;
 
+import javafx.css.PseudoClass;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class loginController {
+public class loginController implements Initializable {
 
     @FXML
     private Button loginBtn;
@@ -42,4 +46,24 @@ public class loginController {
         URI mailto = new URI("mailto:support@tms.de?subject=Problem%20with%20the%20Software");
         desktop.mail(mailto);
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+        PseudoClass correctClass = PseudoClass.getPseudoClass("correct");
+
+        usrInput.textProperty().addListener(event -> {
+            usrInput.pseudoClassStateChanged(errorClass,
+                    usrInput.getText().isEmpty() || !usrInput.getText().matches("^(.+)@(.+)\\.[a-zA-Z]{2,}"));
+            usrInput.pseudoClassStateChanged(correctClass,
+                    !usrInput.getText().isEmpty() && usrInput.getText().matches("^(.+)@(.+)\\.[a-zA-Z]{2,}"));
+        });
+
+        pwdInput.textProperty().addListener(event -> {
+            pwdInput.pseudoClassStateChanged(errorClass, usrInput.getText().isEmpty());
+            pwdInput.pseudoClassStateChanged(correctClass,
+                    !pwdInput.getText().isEmpty() && pwdInput.getText().matches(".{5,}"));
+        });
+    }
+
 }
