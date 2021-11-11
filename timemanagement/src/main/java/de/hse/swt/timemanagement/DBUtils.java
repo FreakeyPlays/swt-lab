@@ -12,13 +12,8 @@ import java.time.LocalDate;
 import javafx.scene.control.Alert;
 
 public class DBUtils {
-    static int id;
-    static String firstName;
-    static String lastname;
-    static String eMail;
-    static String hierarchy;
-    static int groupId;
-    static int vacDays;
+
+    public static User usr;
 
     public static void logInUser(String email, String password) throws IOException {
         Connection connection = null;
@@ -42,11 +37,14 @@ public class DBUtils {
                     String retrievedPassword = resultSet.getString("password");
 
                     if (retrievedPassword.equals(password)) {
-                        setUser(resultSet);
+                        usr = new User(resultSet.getInt("id"), resultSet.getString("firstName"),
+                                resultSet.getString("lastName"), resultSet.getString("email"),
+                                resultSet.getString("hierarchy"), resultSet.getInt("groupid"),
+                                resultSet.getInt("vacationdays"));
                         App.setRoot("main", 1280, 720);
-                        if (hierarchy.equals("supervisor"))
+                        if (usr.getHierarchy().equals("supervisor"))
                             mainController.showSupervisorMenu();
-                        mainController.setNames(firstName, lastname, vacDays);
+                        mainController.setNames(usr.getFirstName(), usr.getLastName(), usr.getvacDays());
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -93,8 +91,9 @@ public class DBUtils {
 
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
-            preparedStatement = connection.prepareStatement(
-                    "SELECT worktime, start, end, break, vacation, illness FROM timetable_" + id + " WHERE date = ?");
+            preparedStatement = connection
+                    .prepareStatement("SELECT worktime, start, end, break, vacation, illness FROM timetable_"
+                            + usr.getID() + " WHERE date = ?");
             preparedStatement.setString(1, localeDate.toString());
             resultSet = preparedStatement.executeQuery();
 
@@ -149,16 +148,16 @@ public class DBUtils {
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
             preparedStatement = connection.prepareStatement(
-                    "SELECT worktime, break, vacation, illness FROM timetable_" + id + " WHERE date = ?");
+                    "SELECT worktime, break, vacation, illness FROM timetable_" + usr.getID() + " WHERE date = ?");
             preparedStatement.setString(1, selectedDate.toString());
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
                 st = connection.createStatement();
-                st.executeUpdate("INSERT INTO timetable_" + id
-                        + " (userid, date, worktime, start, end, break, vacation, illness)" + "VALUES (" + id + ", '"
-                        + selectedDate.toString() + "', '" + newWorktime + "', 'edited', 'edited', '" + newBreaktime
-                        + "', 0, 0)");
+                st.executeUpdate("INSERT INTO timetable_" + usr.getID()
+                        + " (userid, date, worktime, start, end, break, vacation, illness)" + "VALUES (" + usr.getID()
+                        + ", '" + selectedDate.toString() + "', '" + newWorktime + "', 'edited', 'edited', '"
+                        + newBreaktime + "', 0, 0)");
             } else {
                 while (resultSet.next()) {
                     String worktime = resultSet.getString("worktime");
@@ -172,12 +171,13 @@ public class DBUtils {
                         System.out.println("There is new data");
                         Statement statement = connection.createStatement();
 
-                        int updateCount = statement.executeUpdate("UPDATE timetable_" + id + " SET worktime='"
+                        int updateCount = statement.executeUpdate("UPDATE timetable_" + usr.getID() + " SET worktime='"
                                 + newWorktime + "' WHERE date = '" + selectedDate + "'");
-                        updateCount += statement.executeUpdate("UPDATE timetable_" + id + " SET break = '"
+                        updateCount += statement.executeUpdate("UPDATE timetable_" + usr.getID() + " SET break = '"
                                 + newBreaktime + "' WHERE date = '" + selectedDate + "'");
 
-                        System.out.println("Updated timetable_" + id + " successfully : " + updateCount + " Times");
+                        System.out.println(
+                                "Updated timetable_" + usr.getID() + " successfully : " + updateCount + " Times");
 
                         mainController.setTimes(newWorktime, newBreaktime);
                     }
@@ -366,16 +366,6 @@ public class DBUtils {
             alert.show();
         }
         return true;
-    }
-
-    private static void setUser(ResultSet resultset) throws SQLException {
-        id = resultset.getInt("id");
-        firstName = resultset.getString("firstName");
-        lastname = resultset.getString("lastName");
-        eMail = resultset.getString("email");
-        vacDays = resultset.getInt("vacationdays");
-        hierarchy = resultset.getString("hierarchy");
-        groupId = resultset.getInt("GroupId");
     }
 
 }

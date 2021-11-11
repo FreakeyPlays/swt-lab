@@ -328,6 +328,7 @@ public class mainController implements Initializable {
             alert.setContentText("You are still tracking your Workingtime!");
             alert.show();
         } else {
+            DBUtils.usr.clearData();
             App.setRoot("login", 900, 600);
         }
     }
@@ -339,6 +340,7 @@ public class mainController implements Initializable {
             alert.setContentText("You are still tracking your Workingtime!");
             alert.show();
         } else {
+            DBUtils.usr.clearData();
             App.exit();
         }
     }
