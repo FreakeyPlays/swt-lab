@@ -183,7 +183,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="wktBreakTxt" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="00m 00s">
+                  <Label fx:id="wktBreakTxt" layoutX="250.0" layoutY="160.0" prefHeight="40.0" prefWidth="250.0" text="00h 00m 00s">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -275,11 +275,6 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="addUsrHier" layoutX="451.0" layoutY="359.0" prefHeight="40.0" prefWidth="300.0" promptText="Hierarchy" styleClass="input">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
                   <TextField fx:id="addUsrGrpId" layoutY="329.0" prefHeight="40.0" prefWidth="300.0" promptText="Group ID" styleClass="input">
                      <font>
                         <Font size="18.0" />
@@ -327,7 +322,7 @@
                      </font>
                   </TextField>
                   <Line endX="-25.0" endY="280.0" layoutX="423.0" layoutY="133.0" startX="-25.0" startY="-80.0" />
-                  <ComboBox layoutY="279.0" prefHeight="40.0" prefWidth="300.0" promptText="Hierarchy" style="-fx-font-size: 18px;">
+                  <ComboBox fx:id="addUsrCombo" layoutY="279.0" prefHeight="40.0" prefWidth="300.0" promptText="Hierarchy" style="-fx-font-size: 18px;">
                      <styleClass>
                         <String fx:value="input" />
                         <String fx:value="inputCombo" />

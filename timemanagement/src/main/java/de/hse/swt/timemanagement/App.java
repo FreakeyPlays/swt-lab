@@ -3,11 +3,13 @@ package de.hse.swt.timemanagement;
 import java.io.IOException;
 
 import javafx.application.Application;
+import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -24,6 +26,8 @@ public class App extends Application {
     public static Stage mainStage;
     private static double xOffset = 0;
     private static double yOffset = 0;
+    private static PseudoClass errorClass = PseudoClass.getPseudoClass("error");
+    private static PseudoClass correctClass = PseudoClass.getPseudoClass("correct");
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -40,6 +44,22 @@ public class App extends Application {
         mainStage.setScene(scene);
         mainStage.show();
         centerWindow();
+    }
+
+    static void setRoot(String fxml, int witdh, int height) throws IOException {
+        mainStage.close();
+        Parent root = loadFXML(fxml);
+        scene.setRoot(root);
+        makeDraggable(root);
+        mainStage.setWidth(witdh);
+        mainStage.setHeight(height);
+        centerWindow();
+        mainStage.show();
+    }
+
+    private static Parent loadFXML(String fxml) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
+        return fxmlLoader.load();
     }
 
     public static void makeDraggable(Parent root) {
@@ -67,20 +87,11 @@ public class App extends Application {
         mainStage.setY((primScreenBounds.getHeight() - mainStage.getHeight()) / 2);
     }
 
-    static void setRoot(String fxml, int witdh, int height) throws IOException {
-        mainStage.close();
-        Parent root = loadFXML(fxml);
-        scene.setRoot(root);
-        makeDraggable(root);
-        mainStage.setWidth(witdh);
-        mainStage.setHeight(height);
-        centerWindow();
-        mainStage.show();
-    }
-
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static void textFieldValidation(TextField tf, String regex) {
+        tf.textProperty().addListener(event -> {
+            tf.pseudoClassStateChanged(errorClass, tf.getText().isEmpty() || !tf.getText().matches(regex));
+            tf.pseudoClassStateChanged(correctClass, !tf.getText().isEmpty() && tf.getText().matches(regex));
+        });
     }
 
     public static void exit() {
