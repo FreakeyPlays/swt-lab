@@ -253,6 +253,66 @@ public class mainController implements Initializable {
     }
 
     @FXML
+    private void addUser() {
+
+        if (addUsrFirstName.getText().isEmpty() || addUsrLastName.getText().isEmpty() || addUsrEMail.getText().isEmpty()
+                || addUsrPwd.getText().isEmpty() || addUsrGrpId.getText().isEmpty() || addUsrCombo.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Please enter all Fields for Add User!");
+            alert.show();
+        } else {
+            if (!addUsrFirstName.getText().matches("\\w+") || !addUsrLastName.getText().matches("\\w+")
+                    || !addUsrEMail.getText().matches("^(.+)@(.+)\\.[a-zA-Z]{2,}")
+                    || !addUsrPwd.getText().matches(".{5,}") || !addUsrGrpId.getText().matches("\\d+")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Please check your input!");
+                alert.show();
+            } else {
+                String[] newUserArr = new String[6];
+                newUserArr[0] = addUsrFirstName.getText();
+                newUserArr[1] = addUsrLastName.getText();
+                newUserArr[2] = addUsrEMail.getText();
+                newUserArr[3] = addUsrPwd.getText();
+                newUserArr[4] = addUsrCombo.getValue();
+                newUserArr[5] = addUsrGrpId.getText();
+
+                DBUtils.addUserToDB(newUserArr);
+
+                addUsrFirstName.clear();
+                addUsrLastName.clear();
+                addUsrEMail.clear();
+                addUsrPwd.clear();
+                addUsrCombo.valueProperty().set(null);
+                addUsrGrpId.clear();
+            }
+        }
+
+    }
+
+    @FXML
+    private void removeUser() {
+        if (removeUserFirstName.getText().isEmpty() || removeUsrLastName.getText().isEmpty()
+                || removeUsrEMail.getText().isEmpty()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Please enter all Fields for Remove User!");
+            alert.show();
+        } else {
+            if (!removeUserFirstName.getText().matches("\\w+") || !removeUsrLastName.getText().matches("\\w+")
+                    || !removeUsrEMail.getText().matches("^(.+)@(.+)\\.[a-zA-Z]{2,}")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("Please check your input!");
+                alert.show();
+            } else {
+                DBUtils.removeUser(removeUsrEMail.getText().toString());
+
+                removeUserFirstName.clear();
+                removeUsrLastName.clear();
+                removeUsrEMail.clear();
+            }
+        }
+    }
+
+    @FXML
     private void logout() throws IOException {
         if (isWorking) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

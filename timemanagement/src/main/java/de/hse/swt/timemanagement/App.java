@@ -89,7 +89,7 @@ public class App extends Application {
 
     public static void textFieldValidation(TextField tf, String regex) {
         tf.textProperty().addListener(event -> {
-            tf.pseudoClassStateChanged(errorClass, tf.getText().isEmpty() || !tf.getText().matches(regex));
+            tf.pseudoClassStateChanged(errorClass, !tf.getText().isEmpty() && !tf.getText().matches(regex));
             tf.pseudoClassStateChanged(correctClass, !tf.getText().isEmpty() && tf.getText().matches(regex));
         });
     }
