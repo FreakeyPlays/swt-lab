@@ -209,6 +209,151 @@ public class DBUtils {
         }
     }
 
+    public static void addUserToDB(String[] newUsrData) {
+
+        if (!doesUsrExist(newUsrData[2])) {
+
+            Connection connection = null;
+            Statement statement = null;
+            ResultSet resultSet = null;
+
+            try {
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+                statement = connection.createStatement();
+                statement.executeUpdate(
+                        "INSERT INTO user (firstName, lastName, email, password, vacationdays,hierarchy, groupid)"
+                                + "VALUES ('" + newUsrData[0] + "', '" + newUsrData[1] + "', '" + newUsrData[2] + "', '"
+                                + newUsrData[3] + "', 30, '" + newUsrData[4] + "', '" + newUsrData[5] + "')");
+                resultSet = statement.executeQuery("SELECT id FROM user WHERE email='" + newUsrData[2] + "'");
+                while (resultSet.next()) {
+                    String tempId = resultSet.getString("id");
+                    statement.executeUpdate("CREATE TABLE timetable_" + tempId + " (\n" + "id int(11) NOT NULL,\n"
+                            + "userid int(11) DEFAULT NULL,\n" + "date varchar(128) NOT NULL,\n"
+                            + "worktime varchar(128) NOT NULL,\n" + "start varchar(128) NOT NULL,\n"
+                            + "end varchar(128) NOT NULL,\n" + "break varchar(128) NOT NULL,\n"
+                            + "vacation int(11) NOT NULL,\n" + "illness int(11) NOT NULL\n" + ")");
+                }
+            } catch (SQLException ignore) {
+            } finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("User was Added.");
+                alert.show();
+            }
+
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This user does aleady exist!");
+            alert.show();
+        }
+
+    }
+
+    public static void removeUser(String deleteUser) {
+        if (doesUsrExist(deleteUser)) {
+            Connection connection = null;
+            Statement statement = null;
+            ResultSet resultSet = null;
+
+            try {
+                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+                statement = connection.createStatement();
+                resultSet = statement.executeQuery("SELECT id FROM user WHERE email='" + deleteUser + "'");
+                while (resultSet.next()) {
+                    String tmpId = resultSet.getString("id");
+                    statement.executeUpdate("DELETE FROM user WHERE user.id = " + tmpId);
+                    statement.executeUpdate("DROP TABLE timetable_" + tmpId);
+                }
+            } catch (SQLException ignore) {
+            } finally {
+                if (resultSet != null) {
+                    try {
+                        resultSet.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (statement != null) {
+                    try {
+                        statement.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                if (connection != null) {
+                    try {
+                        connection.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("User was Removed.");
+                alert.show();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("This does not exist!");
+            alert.show();
+        }
+    }
+
+    private static boolean doesUsrExist(String usrEMail) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            preparedStatement = connection.prepareStatement("SELECT id FROM user WHERE email='" + usrEMail + "'");
+            resultSet = preparedStatement.executeQuery();
+            if (!resultSet.isBeforeFirst()) {
+                preparedStatement.close();
+                resultSet.close();
+                connection.close();
+                return false;
+            } else {
+                while (resultSet.next()) {
+                    preparedStatement.close();
+                    resultSet.close();
+                    connection.close();
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("No connection to the Database!");
+            alert.show();
+        }
+        return true;
+    }
+
     private static void setUser(ResultSet resultset) throws SQLException {
         id = resultset.getInt("id");
         firstName = resultset.getString("firstName");
