@@ -1,7 +1,7 @@
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class DateToTimestampExample1 {
+public class TimeStamp {
 	
 	Date date;
 	Timestamp ts;
