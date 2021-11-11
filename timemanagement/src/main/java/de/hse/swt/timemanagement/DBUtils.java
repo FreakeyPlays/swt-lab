@@ -143,6 +143,7 @@ public class DBUtils {
     public static void compareData(LocalDate selectedDate, String newWorktime, String newBreaktime) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        Statement st = null;
         ResultSet resultSet = null;
 
         try {
@@ -153,7 +154,11 @@ public class DBUtils {
             resultSet = preparedStatement.executeQuery();
 
             if (!resultSet.isBeforeFirst()) {
-                System.out.println("No data found.");
+                st = connection.createStatement();
+                st.executeUpdate("INSERT INTO timetable_" + id
+                        + " (userid, date, worktime, start, end, break, vacation, illness)" + "VALUES (" + id + ", '"
+                        + selectedDate.toString() + "', '" + newWorktime + "', 'edited', 'edited', '" + newBreaktime
+                        + "', 0, 0)");
             } else {
                 while (resultSet.next()) {
                     String worktime = resultSet.getString("worktime");
@@ -179,6 +184,7 @@ public class DBUtils {
                 }
             }
         } catch (SQLException e) {
+            e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("No connection to the Database!");
             alert.show();
@@ -194,6 +200,14 @@ public class DBUtils {
             if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (st != null) {
+                try {
+                    st.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }

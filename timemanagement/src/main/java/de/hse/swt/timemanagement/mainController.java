@@ -203,13 +203,22 @@ public class mainController implements Initializable {
 
     @FXML
     private void saveWorktime() {
-        String newWorkTime = editWktTimeIn.getText();
-        String newBreakTime = editWktBreakIn.getText();
-        DBUtils.compareData(selectedDate, codeTimeFormat(newWorkTime), codeTimeFormat(newBreakTime));
-        editWorkTimePane.setDisable(true);
-        editWorkTimePane.setOpacity(0);
-        workTimePane.setDisable(false);
-        workTimePane.setOpacity(1);
+        if (editWktTimeIn.getText().matches("\\d{2}h \\d{2}m \\d{2}s")
+                && editWktBreakIn.getText().matches("\\d{2}h \\d{2}m \\d{2}s")) {
+            String newWorkTime = editWktTimeIn.getText();
+            String newBreakTime = editWktBreakIn.getText();
+            DBUtils.compareData(selectedDate, codeTimeFormat(newWorkTime), codeTimeFormat(newBreakTime));
+            wktTimeTxt.setText(newWorkTime);
+            wktBreakTxt.setText(newBreakTime);
+            editWorkTimePane.setDisable(true);
+            editWorkTimePane.setOpacity(0);
+            workTimePane.setDisable(false);
+            workTimePane.setOpacity(1);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("The Times must be in format: 00h 00m 00s");
+            alert.show();
+        }
     }
 
     @FXML

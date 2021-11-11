@@ -23,7 +23,7 @@ import javafx.stage.StageStyle;
 public class App extends Application {
 
     private static Scene scene;
-    public static Stage mainStage;
+    private static Stage mainStage;
     private static double xOffset = 0;
     private static double yOffset = 0;
     private static PseudoClass errorClass = PseudoClass.getPseudoClass("error");
