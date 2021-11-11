@@ -3,8 +3,8 @@ import java.util.Date;
 
 public class TimeStamp {
 	
-	Date date;
-	Timestamp ts;
+	private Date date;
+	private Timestamp ts;
 	
 	public static void main(String args[]){    
 		initComponents();
