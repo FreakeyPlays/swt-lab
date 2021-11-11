@@ -22,6 +22,16 @@
   -fx-border-color: #536df3;
 }
 
+.input:error {
+  -fx-background-color: rgb(245, 160, 160);
+  -fx-border-color: red;
+}
+
+.input:focused:correct {
+  -fx-background-color: rgb(161, 214, 161);
+  -fx-border-color: green;
+}
+
 .textArea {
   -fx-background-color: transparent;
 }
@@ -71,6 +81,21 @@
   -fx-background-color: #536df3;
 }
 
+.inputCombo .arrow {
+  -fx-background-color: #536df3;
+}
+
+.inputCombo .arrow-button {
+  -fx-background-color: #ececec;
+}
+
+.inputCombo .list-cell {
+  -fx-background-color: #ececec;
+}
+
+.inputCombo .list-cell:hover {
+  -fx-background-color: #657ef8;
+}
 /*Worktime Window*/
 
 /*FlexTime Window*/

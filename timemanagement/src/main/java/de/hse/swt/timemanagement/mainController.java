@@ -11,12 +11,16 @@ import javafx.scene.Group;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class mainController implements Initializable {
+
+    @FXML
+    private ComboBox<String> addUsrCombo;
 
     @FXML
     private Label activeVacationDaysTxt;
@@ -368,6 +372,8 @@ public class mainController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        addUsrCombo.getItems().addAll("Employee", "Supervisor");
+
         static_firstNameTxt = firstNameTxt;
         static_lastNameTxt = lastNameTxt;
         static_activeVacationDaysTxt = activeVacationDaysTxt;
@@ -375,6 +381,18 @@ public class mainController implements Initializable {
         static_userInfoMenuBtn = userInfoMenuBtn;
         static_wktTimeTxt = wktTimeTxt;
         static_wktBreakTxt = wktBreakTxt;
+
+        App.textFieldValidation(addUsrFirstName, "\\w+");
+        App.textFieldValidation(addUsrLastName, "\\w+");
+        App.textFieldValidation(addUsrEMail, "^(.+)@(.+)\\.[a-zA-Z]{2,}");
+        App.textFieldValidation(addUsrPwd, ".{5,}");
+        // dropdown Validation
+        App.textFieldValidation(addUsrGrpId, "\\d+");
+        App.textFieldValidation(removeUserFirstName, "\\w+");
+        App.textFieldValidation(removeUsrLastName, "\\w+");
+        App.textFieldValidation(removeUsrEMail, "^(.+)@(.+)\\.[a-zA-Z]{2,}");
+        App.textFieldValidation(editWktTimeIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
+        App.textFieldValidation(editWktBreakIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
     }
 
 }
