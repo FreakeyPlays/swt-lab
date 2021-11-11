@@ -6,10 +6,9 @@ public class TimeStamp {
 	private Date date;
 	private Timestamp ts;
 	
-	public static void main(String args[]){    
+	public TimeStamp() {
 		initComponents();
 	}
-	
 	
 	public Timestamp getTimestamp() {
         ts=new Timestamp(date.getTime());  
