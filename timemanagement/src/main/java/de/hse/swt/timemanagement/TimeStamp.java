@@ -58,6 +58,8 @@ public class TimeStamp {
 		minutef = minute1 - minute;
 		secondsf = seconds1 - seconds;
 		
+		//Idee Umsetzung mit minuten zusammen rechnen und jeweils wieder umrechnen um die zeit zu bekommen!
+		
 		return (hoursf + ":" + minutef + ":" + secondsf);
 		}
 
