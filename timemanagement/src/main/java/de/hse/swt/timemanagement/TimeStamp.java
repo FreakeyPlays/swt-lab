@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Calendar;
 
-import javafx.concurrent.Task;
 
 public class TimeStamp {
 
@@ -48,26 +47,5 @@ public class TimeStamp {
 	private void initComponents() {
 		date = new Date();
 	}
-
-	//public void startTimer() {
-	//	thread = new Thread(this);
-	//	thread.start();
-	//}
-
-	//@SuppressWarnings("deprecation")
-	//public void stopTimer() {
-	//	thread.stop();
-	//	thread = null;
-	//}
-
-/*	@Override
-	protected Integer call() throws Exception {
-		while (true) {
-			String t = getTimestamp();
-			System.out.println(t);
-			mc.printCurrentTime(t);
-			thread.sleep(1000);
-		}
-	}*/
 
 }
