@@ -15,6 +15,14 @@ public class TimeStamp {
 	private int hours = 0;
 	private int minute = 0;
 	private int seconds = 0;
+	
+	private int hours1 = 0;
+	private int minute1 = 0;
+	private int seconds1 = 0;
+	
+	private int hoursf = 0;
+	private int minutef = 0;
+	private int secondsf = 0;
 
 	public TimeStamp() {
 		initComponents();
@@ -41,8 +49,17 @@ public class TimeStamp {
 	}
 
 	public String getTimer() {
-		return "Penis";
-	}
+		Calendar calendar2 = Calendar.getInstance();
+		hours1 = calendar2.get(calendar2.HOUR_OF_DAY);
+		minute1 = calendar2.get(calendar2.MINUTE);
+		seconds1 = calendar2.get(calendar2.SECOND);
+		
+		hoursf = hours1 - hours;
+		minutef = minute1 - minute;
+		secondsf = seconds1 - seconds;
+		
+		return (hoursf + ":" + minutef + ":" + secondsf);
+		}
 
 	private void initComponents() {
 		date = new Date();
