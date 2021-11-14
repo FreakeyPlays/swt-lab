@@ -15,6 +15,15 @@ public class DBUtils {
 
     public static User usr;
 
+    /**
+     * This Function takes in {@code email} and {@code password} and makes a
+     * connection to the Database. It Tryes to login the user with the provided
+     * credentials and pulls all Data into a User.
+     * 
+     * @param email    of the User
+     * @param password of the User
+     * @throws IOException
+     */
     public static void logInUser(String email, String password) throws IOException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -84,6 +93,13 @@ public class DBUtils {
         }
     }
 
+    /**
+     * This Function takes in the {@code localeData} and tryes to get data of the
+     * Database. If it found Data itgets Displayed int the Labels
+     * 
+     * @param localeDate the selected Date of the Date Picker
+     * @throws IOException
+     */
     public static void getDataOfDate(LocalDate localeDate) throws IOException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -139,6 +155,14 @@ public class DBUtils {
         }
     }
 
+    /**
+     * This function takes {@code selectedDate}, {@code newWorktime} and
+     * {@code newBreaktime} and cheks if the Data has changend.
+     * 
+     * @param selectedDate
+     * @param newWorktime
+     * @param newBreaktime
+     */
     public static void compareData(LocalDate selectedDate, String newWorktime, String newBreaktime) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -223,6 +247,12 @@ public class DBUtils {
         }
     }
 
+    /**
+     * This function takes in an Array of {@code newusrData} and addes this to the
+     * users Database. It also creates a new timetable database for each User.
+     * 
+     * @param newUsrData
+     */
     public static void addUserToDB(String[] newUsrData) {
 
         if (!doesUsrExist(newUsrData[2])) {
@@ -286,6 +316,12 @@ public class DBUtils {
 
     }
 
+    /**
+     * This function takes in a E-Mail of {@code deleteUser} and removes the User
+     * from the Database and the timetable.
+     * 
+     * @param deleteUser
+     */
     public static void removeUser(String deleteUser) {
         if (doesUsrExist(deleteUser)) {
             Connection connection = null;
@@ -338,6 +374,13 @@ public class DBUtils {
         }
     }
 
+    /**
+     * This function takes in a {@code userEMail} and checks if the User is
+     * existing.
+     * 
+     * @param usrEMail
+     * @return true or False
+     */
     private static boolean doesUsrExist(String usrEMail) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
