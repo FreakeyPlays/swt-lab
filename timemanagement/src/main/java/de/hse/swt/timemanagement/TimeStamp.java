@@ -2,6 +2,7 @@ package de.hse.swt.timemanagement;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Calendar;
 
 public class TimeStamp implements Runnable{
 
@@ -9,17 +10,23 @@ public class TimeStamp implements Runnable{
 	private Timestamp ts;
 	
 	private Thread thread = null;
-	private String timeString = "";
+	
+	private int hours = 0;
+	private int minute = 0;
+	private int seconds = 0;
 	
 
 	public TimeStamp() {
 		initComponents();
 	}
 
-	public Timestamp getTimestamp() {
-		ts = new Timestamp(date.getTime());
-		System.out.println(ts);// Test Printout of the Timestamp
-		return ts;// Returntype based on the sql Timestamp!!
+	public String getTimestamp() {
+		Calendar calendar = Calendar.getInstance();
+		hours = calendar.get(calendar.HOUR_OF_DAY);
+		minute = calendar.get(calendar.MINUTE);
+		seconds = calendar.get(calendar.SECOND);
+		 
+		return (hours + ":" + minute + ":" + seconds);// Returntype based on the sql Timestamp!!
 	}
 
 	private void initComponents() {
@@ -33,12 +40,16 @@ public class TimeStamp implements Runnable{
 
 	@Override
 	public void run() {
-		
+		try {
 		while(true) {
-			timeString = getTimestamp().toString();
-			System.out.println(timeString);
+
+			System.out.println(getTimestamp());
+			thread.sleep(1000);
 		}
-		
+		}
+		catch (Exception e) {
+			
+		}
 	}
 
 }
