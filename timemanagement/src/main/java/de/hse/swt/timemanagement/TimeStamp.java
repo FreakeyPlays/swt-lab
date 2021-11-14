@@ -28,6 +28,9 @@ public class TimeStamp implements Runnable{
 		 
 		return (hours + ":" + minute + ":" + seconds);// Returntype based on the sql Timestamp!!
 	}
+	public String getTimer() {
+		
+	}
 
 	private void initComponents() {
 		date = new Date();
