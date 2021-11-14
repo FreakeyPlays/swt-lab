@@ -43,7 +43,7 @@ public class User {
         return this.groupId;
     }
 
-    final public int getvacDays() {
+    final public int getVacDays() {
         return this.vacDays;
     }
 
