@@ -101,9 +101,14 @@ public class App extends Application {
     public static void minimize() {
         mainStage.setIconified(true);
     }
-
+    
+    private static TimeStamp test;
+    
     public static void main(String[] args) {
-        launch();
+        //launch();
+       test = new TimeStamp();
+       test.startTimer();
+        
     }
 
 }

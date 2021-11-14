@@ -3,10 +3,14 @@ package de.hse.swt.timemanagement;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class TimeStamp {
+public class TimeStamp implements Runnable{
 
 	private Date date;
 	private Timestamp ts;
+	
+	private Thread thread = null;
+	private String timeString = "";
+	
 
 	public TimeStamp() {
 		initComponents();
@@ -20,6 +24,21 @@ public class TimeStamp {
 
 	private void initComponents() {
 		date = new Date();
+	}
+	
+	public void startTimer() {
+		thread = new Thread(this);
+		thread.start();
+	}
+
+	@Override
+	public void run() {
+		
+		while(true) {
+			timeString = getTimestamp().toString();
+			System.out.println(timeString);
+		}
+		
 	}
 
 }
