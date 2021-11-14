@@ -144,7 +144,7 @@ public class mainController implements Initializable {
     private static boolean isWorking;
     private static boolean isOnBreak = false;
     private static LocalDate selectedDate;
-
+   
     @FXML
     public void dateSelected() throws IOException {
         LocalDate currentMonth = LocalDate.now();
@@ -440,7 +440,7 @@ public class mainController implements Initializable {
         String formatted = arr[0] + ":" + arr[1] + ":" + arr[2];
         return formatted;
     }
-
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addUsrCombo.getItems().addAll("Employee", "Supervisor");
@@ -464,6 +464,7 @@ public class mainController implements Initializable {
         App.textFieldValidation(removeUsrEMail, "^(.+)@(.+)\\.[a-zA-Z]{2,}");
         App.textFieldValidation(editWktTimeIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
         App.textFieldValidation(editWktBreakIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
+        
     }
 
 }
