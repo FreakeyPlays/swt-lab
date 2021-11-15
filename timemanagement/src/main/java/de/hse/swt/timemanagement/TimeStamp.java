@@ -22,8 +22,10 @@ public class TimeStamp {
 	
 	private int hoursf = 0;
 	private int minutef = 0;
-	private int secondsf = 0;
-
+	private int minuteges = 0;
+	private int hoursfinal = 0;
+	private int minutesfinal = 0;
+	
 	public TimeStamp() {
 		initComponents();
 	}
@@ -56,11 +58,14 @@ public class TimeStamp {
 		
 		hoursf = hours1 - hours;
 		minutef = minute1 - minute;
-		secondsf = seconds1 - seconds;
 		
-		//Idee Umsetzung mit minuten zusammen rechnen und jeweils wieder umrechnen um die zeit zu bekommen!
+		minuteges += minutef;
+		minuteges += (60 * hoursf);
 		
-		return (hoursf + ":" + minutef + ":" + secondsf);
+		hoursfinal = minuteges / 60;
+		minutesfinal = minuteges % 60;
+		
+		return (hoursfinal + ":" + minutesfinal);
 		}
 
 	private void initComponents() {
