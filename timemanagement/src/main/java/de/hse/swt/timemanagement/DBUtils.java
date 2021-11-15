@@ -410,5 +410,17 @@ public class DBUtils {
         }
         return true;
     }
+    
+    private static void enterStartWorktime() {
+    	Connection connection = null;
+    	PreparedStatement preparedStatement = null;
+    	ResultSet resultSet = null;
+    	
+    	try{
+    		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+    		preparedStatement = connection.prepareStatement("SELECT id FROM user WHERE email='" + usrEMail + "'");
+    		
+    	}
+    }
 
 }
