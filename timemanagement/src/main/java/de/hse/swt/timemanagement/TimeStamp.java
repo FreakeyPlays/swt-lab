@@ -12,19 +12,21 @@ public class TimeStamp {
 
 	private Thread thread = null;
 
+	//Variablen für getTimestamp()
 	private int hours = 0;
 	private int minute = 0;
 	private int seconds = 0;
 	
+	//Variablen für getTimer()
 	private int hours1 = 0;
 	private int minute1 = 0;
-	private int seconds1 = 0;
-	
 	private int hoursf = 0;
 	private int minutef = 0;
 	private int minuteges = 0;
+	private int minutestart = 0;
 	private int hoursfinal = 0;
 	private int minutesfinal = 0;
+	private int speicher = 0;
 	
 	public TimeStamp() {
 		initComponents();
@@ -32,7 +34,7 @@ public class TimeStamp {
 
 	public String getTimestamp() {
 		Calendar calendar = Calendar.getInstance();
-		hours = calendar.get(calendar.HOUR_OF_DAY);
+		hours = calendar.get(calendar.HOUR);
 		minute = calendar.get(calendar.MINUTE);
 		seconds = calendar.get(calendar.SECOND);
 
@@ -51,22 +53,34 @@ public class TimeStamp {
 	}
 
 	public String getTimer() {
-		Calendar calendar2 = Calendar.getInstance();
-		hours1 = calendar2.get(calendar2.HOUR_OF_DAY);
-		minute1 = calendar2.get(calendar2.MINUTE);
-		seconds1 = calendar2.get(calendar2.SECOND);
+		//Inhalt der klasse sollte ohne probleme in run() vom Kernel einbaubar sein!
+		//Zum testen der Klasse muss vor dem Timer auf jeden fall einmal getTimestamp ausgeführt werden da dies als Start initialisierung gilt
 		
+		//Holen der aktuellen Zeit für den Vergleich der Startzeit
+		Calendar calendar2 = Calendar.getInstance();
+		hours1 = calendar2.get(calendar2.HOUR);
+		minute1 = calendar2.get(calendar2.MINUTE);
+		
+		//Berechnung Minuten der Startzeit
+		minutestart += ( hours * 60 );
+		minutestart += minute;
+		
+		//Bestimmung der aktuellen Minuten der aktuellen Zeit
 		hoursf = hours1 - hours;
 		minutef = minute1 - minute;
 		
 		minuteges += minutef;
 		minuteges += (60 * hoursf);
 		
-		hoursfinal = minuteges / 60;
-		minutesfinal = minuteges % 60;
+		//Vergleich Startminuten mit aktuellen Minuten
+		speicher = minuteges - minutestart;
 		
-		return (hoursfinal + ":" + minutesfinal);
-		}
+		//aufteilung übrige zeit und dann rückgabe
+		hoursfinal = speicher / 60;
+		minutesfinal = speicher % 60;
+		
+		return (hoursf + ":" + minutef);
+	}
 
 	private void initComponents() {
 		date = new Date();
