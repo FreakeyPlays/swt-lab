@@ -16,16 +16,21 @@ public class TimeStamp {
 	private static int minute = 0;
 	private static int seconds = 0;
 
-	// Variablen für getTimer()
-	private int hours1 = 0;
-	private int minute1 = 0;
-	private int hoursf = 0;
-	private int minutef = 0;
-	private int minuteges = 0;
-	private int minutestart = 0;
-	private int hoursfinal = 0;
-	private int minutesfinal = 0;
-	private int speicher = 0;
+	private static int startHours = 0;
+	private static int startMinutes = 0;
+	private static int startSeconds = 0;
+	
+	private static int endHours = 0;
+	private static int endMinutes = 0;
+	private static int endSeconds = 0;
+	
+	private static int finalStart = 0;
+	private static int finalEnd = 0;
+	private static int finalTime = 0;
+	
+	private static int finalHours = 0;
+	private static int finalMinutes = 0;
+	private static int finalSeconds = 0;
 
 	public TimeStamp() {
 		initComponents();
@@ -55,37 +60,31 @@ public class TimeStamp {
 		return (sh + ":" + sm + ":" + ss);
 	}
 
-	public String getTimer() {
-		// Inhalt der klasse sollte ohne probleme in run() vom Kernel einbaubar sein!
-		// Zum testen der Klasse muss vor dem Timer auf jeden fall einmal getTimestamp
-		// ausgeführt werden da dies als Start initialisierung gilt
+	public static String getTimer(String start, String end) {
+		startHours = Integer.parseInt(start.substring(0, 2));
+		startMinutes = Integer.parseInt(start.substring(3, 5));
+		startSeconds = Integer.parseInt(start.substring(6, 8));
+		
+		endHours = Integer.parseInt(end.substring(0, 2));
+		endMinutes = Integer.parseInt(end.substring(3, 5));
+		endSeconds = Integer.parseInt(end.substring(6, 8));
 
-		// Holen der aktuellen Zeit für den Vergleich der Startzeit
-		Calendar calendar2 = Calendar.getInstance();
-		hours1 = calendar2.get(calendar2.HOUR);
-		minute1 = calendar2.get(calendar2.MINUTE);
-
-		// Berechnung Minuten der Startzeit
-		minutestart += (hours * 60);
-		minutestart += minute;
-
-		// Bestimmung der aktuellen Minuten der aktuellen Zeit
-		hoursf = hours1 - hours;
-		minutef = minute1 - minute;
-
-		minuteges += minutef;
-		minuteges += (60 * hoursf);
-
-		// Vergleich Startminuten mit aktuellen Minuten
-		speicher = minuteges - minutestart;
-
-		// aufteilung übrige zeit und dann rückgabe
-		hoursfinal = speicher / 60;
-		minutesfinal = speicher % 60;
-
-		return (hoursf + ":" + minutef);
+		finalStart += ((startHours *60)*60);
+		finalStart += (startMinutes*60);
+		finalStart += startSeconds;
+		
+		finalEnd += ((endHours *60)*60);
+		finalEnd += (endMinutes*60);
+		finalEnd += endSeconds;
+		
+		finalTime = finalEnd - finalStart;
+		
+		finalHours = (finalTime / 60 ) / 60;
+		finalMinutes = (finalTime - ((finalHours * 60)*60 )) / 60;
+		finalSeconds = finalTime % 60;
+		
+		return(finalHours + ":" + finalMinutes + ":" + finalSeconds);
 	}
-
 	private void initComponents() {
 		date = new Date();
 	}

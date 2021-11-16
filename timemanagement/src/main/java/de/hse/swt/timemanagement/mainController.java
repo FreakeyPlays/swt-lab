@@ -244,8 +244,11 @@ public class mainController implements Initializable {
 					String[] time = LocalTime.now().toString().split("\\.");
 					DBUtils.enterEndWorktime(time[0]);
 
-					// TODO: get start und End : calculate Worktime
-
+					String []arr = DBUtils.getStartEnd();
+					String workedTime = TimeStamp.getTimer(arr[0], arr[1]);
+					DBUtils.setWorktime(workedTime);
+					activeWorktimeTxt.setText(displayTimeFormat(workedTime));
+					
 					worktimeBtn.setText("Start Worktime");
 				}
 			}
