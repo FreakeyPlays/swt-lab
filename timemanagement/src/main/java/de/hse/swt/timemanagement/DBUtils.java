@@ -507,7 +507,7 @@ public class DBUtils {
             resultSet = statement.executeQuery("SELECT start, end FROM timetable_" + usr.getID() + " WHERE date='"
                     + LocalDate.now().toString() + "'");
 
-            if (!resultSet.isBeforeFirst()) {
+            if (!resultSet.next()) {
                 String[] times = { "", "" };
                 return times;
             } else {

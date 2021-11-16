@@ -243,12 +243,11 @@ public class mainController implements Initializable {
 				if (alert.getResult() == ButtonType.YES) {
 					String[] time = LocalTime.now().toString().split("\\.");
 					DBUtils.enterEndWorktime(time[0]);
-
-					String []arr = DBUtils.getStartEnd();
+					String[] arr = DBUtils.getStartEnd();
 					String workedTime = TimeStamp.getTimer(arr[0], arr[1]);
 					DBUtils.setWorktime(workedTime);
 					activeWorktimeTxt.setText(displayTimeFormat(workedTime));
-					
+
 					worktimeBtn.setText("Start Worktime");
 				}
 			}
