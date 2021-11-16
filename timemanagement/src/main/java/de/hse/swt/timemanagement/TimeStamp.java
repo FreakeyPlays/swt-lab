@@ -12,9 +12,9 @@ public class TimeStamp {
 	private Thread thread = null;
 
 	// Variablen für getTimestamp()
-	private int hours = 0;
-	private int minute = 0;
-	private int seconds = 0;
+	private static int hours = 0;
+	private static int minute = 0;
+	private static int seconds = 0;
 
 	// Variablen für getTimer()
 	private int hours1 = 0;
@@ -31,16 +31,19 @@ public class TimeStamp {
 		initComponents();
 	}
 
-	public String getTimestamp() {
+	
+	/**  
+	 * @param usrEMail
+     * @return String of current time in format: hh:mm:ss
+	 * */
+	public static String getTimestamp() {
 		Calendar calendar = Calendar.getInstance();
-		hours = calendar.get(calendar.HOUR);
-		minute = calendar.get(calendar.MINUTE);
-		seconds = calendar.get(calendar.SECOND);
+		hours = calendar.get(Calendar.HOUR);
+		minute = calendar.get(Calendar.MINUTE);
+		seconds = calendar.get(Calendar.SECOND);
 
-		String sh = ("" + hours); // Dieser block ist dazu da dass uhrzeiten in dem format angegeben werden können
-									// : 10:03:23
-		if (hours < 10) // Code, der die Variablen hours minute und seconds verändert über diesem block
-						// spätestens ausdefinieren!!!
+		String sh = ("" + hours);
+		if (hours < 10) 
 			sh = ("0" + hours);
 		String sm = ("" + hours);
 		if (hours < 10)

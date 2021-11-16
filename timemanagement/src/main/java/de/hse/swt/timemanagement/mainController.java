@@ -155,7 +155,7 @@ public class mainController implements Initializable {
 
 		@Override
 		public void run() {
-			workTimeString.setValue(ts.getTimestamp());
+			workTimeString.setValue(TimeStamp.getTimestamp());
 		}};
 	
 	public void printCurrentTime(String t) {
@@ -486,7 +486,7 @@ public class mainController implements Initializable {
 		App.textFieldValidation(editWktBreakIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
 		
 		//_______________________________KEIN PLAN WIE MAN DAS ZUM LAUFEN BRINGT. ICH GEBE AUF____________________________________
-		ts = new TimeStamp();
+		
 		TimerTaskTest myTimer = new TimerTaskTest();
 		Timer t = new Timer(true);
 		t.scheduleAtFixedRate(myTimer, 1000, 1000);
