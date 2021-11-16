@@ -101,9 +101,9 @@ public class App extends Application {
     public static void minimize() {
         mainStage.setIconified(true);
     }
-    
+
     public static void main(String[] args) {
-       launch();
+        launch();
     }
 
 }
