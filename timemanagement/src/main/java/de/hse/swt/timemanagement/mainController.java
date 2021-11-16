@@ -3,11 +3,9 @@ package de.hse.swt.timemanagement;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ResourceBundle;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -147,22 +145,12 @@ public class mainController implements Initializable {
 	private static boolean isWorking;
 	private static boolean isOnBreak = false;
 	private static LocalDate selectedDate;
-	
-	private SimpleStringProperty workTimeString = new SimpleStringProperty("00:00:00");
-	private TimeStamp ts;
-		
-	class TimerTaskTest extends TimerTask {
 
-		@Override
-		public void run() {
-			workTimeString.setValue(TimeStamp.getTimestamp());
-		}};
-	
 	public void printCurrentTime(String t) {
 		activeWorktimeTxt.setText(t);
 		System.out.println("Task called this method");
 	}
-	
+
 	@FXML
 	public void dateSelected() throws IOException {
 		LocalDate currentMonth = LocalDate.now();
@@ -253,12 +241,21 @@ public class mainController implements Initializable {
 				alert.showAndWait();
 
 				if (alert.getResult() == ButtonType.YES) {
+					String[] time = LocalTime.now().toString().split("\\.");
+					DBUtils.enterEndWorktime(time[0]);
+
+					// TODO: get start und End : calculate Worktime
+
 					worktimeBtn.setText("Start Worktime");
 				}
 			}
 		} else {
-			isWorking = true;
-			worktimeBtn.setText("End Worktime");
+			String[] time = LocalTime.now().toString().split("\\.");
+			boolean test = DBUtils.enterStartWorktime(time[0]);
+			if (test) {
+				isWorking = true;
+				worktimeBtn.setText("End Worktime");
+			}
 		}
 	}
 
@@ -459,8 +456,6 @@ public class mainController implements Initializable {
 		return formatted;
 	}
 
-	
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		addUsrCombo.getItems().addAll("Employee", "Supervisor");
@@ -484,13 +479,7 @@ public class mainController implements Initializable {
 		App.textFieldValidation(removeUsrEMail, "^(.+)@(.+)\\.[a-zA-Z]{2,}");
 		App.textFieldValidation(editWktTimeIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
 		App.textFieldValidation(editWktBreakIn, "\\d{2}h\\s\\d{2}m\\s\\d{2}s");
-		
-		//_______________________________KEIN PLAN WIE MAN DAS ZUM LAUFEN BRINGT. ICH GEBE AUF____________________________________
-		
-		TimerTaskTest myTimer = new TimerTaskTest();
-		Timer t = new Timer(true);
-		t.scheduleAtFixedRate(myTimer, 1000, 1000);
-		activeWorktimeTxt.textProperty().bind(workTimeString);
-		}
+
+	}
 
 }

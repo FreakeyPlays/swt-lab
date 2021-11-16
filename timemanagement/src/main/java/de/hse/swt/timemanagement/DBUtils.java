@@ -411,18 +411,168 @@ public class DBUtils {
         return true;
     }
 
-    // private static void enterStartWorktime() {
-    // Connection connection = null;
-    // PreparedStatement preparedStatement = null;
-    // ResultSet resultSet = null;
+    public static boolean enterStartWorktime(String startTime) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
 
-    // try{
-    // connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt",
-    // "root", "");
-    // preparedStatement = connection.prepareStatement("SELECT id FROM user WHERE
-    // email='" + usrEMail + "'");
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            preparedStatement = connection.prepareStatement(
+                    "SELECT id FROM timetable_" + usr.getID() + " WHERE date = '" + LocalDate.now().toString() + "'");
+            resultSet = preparedStatement.executeQuery();
 
-    // }
-    // }
+            if (!resultSet.isBeforeFirst()) {
+                Statement statement = null;
+                statement = connection.createStatement();
+                statement.executeUpdate("INSERT INTO timetable_" + usr.getID()
+                        + " (userid, date, worktime, start, end, break, vacation, illness)" + "VALUES (" + usr.getID()
+                        + ", '" + LocalDate.now() + "', '00:00:00', '" + startTime
+                        + "', '00:00:00', '00:00:00', 0, 0)");
+                statement.close();
+                return true;
+            } else {
+                System.out.println("Already worked Today!");
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return false;
+    }
+
+    public static void enterEndWorktime(String worktime) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE timetable_" + usr.getID() + " SET end='" + worktime + "' WHERE date = '"
+                    + LocalDate.now().toString() + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public static String[] getStartEnd() {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT start, end FROM timetable_" + usr.getID() + " WHERE date='"
+                    + LocalDate.now().toString() + "'");
+
+            if (!resultSet.isBeforeFirst()) {
+                String[] times = { "", "" };
+                return times;
+            } else {
+                String[] times = { resultSet.getString("start"), resultSet.getString("end") };
+                return times;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        String[] times = { "", "" };
+        return times;
+    }
+
+    public static void setWorktime(String time) {
+        Connection connection = null;
+        Statement statement = null;
+
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            statement = connection.createStatement();
+            statement.executeUpdate("UPDATE timetable_" + usr.getID() + " SET worktime='" + time + "' WHERE date = '"
+                    + LocalDate.now().toString() + "'");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 
 }
