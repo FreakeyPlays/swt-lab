@@ -1,6 +1,12 @@
 package de.hse.swt.timemanagement;
 
+import java.util.Calendar;
+
 public class TimeStamp {
+	
+	private int hours = 0;
+	private int minute = 0;
+	private int seconds = 0;
 
 	private static int startHours = 0;
 	private static int startMinutes = 0;
@@ -17,6 +23,26 @@ public class TimeStamp {
 	private static int finalHours = 0;
 	private static int finalMinutes = 0;
 	private static int finalSeconds = 0;
+	
+	public String getTimestamp() {
+		Calendar calendar = Calendar.getInstance();
+		hours = calendar.get(calendar.HOUR);
+		minute = calendar.get(calendar.MINUTE);
+		seconds = calendar.get(calendar.SECOND);
+
+		
+		String sh = (""+hours);	//Dieser block ist dazu da dass uhrzeiten in dem format angegeben werden können : 10:03:23
+		if(hours < 10)			//Code, der die Variablen hours minute und seconds verändert über diesem block spätestens ausdefinieren!!!
+			sh = ("0"+hours);
+		String sm = (""+minute);
+		if(minute < 10)
+			sm = ("0"+minute);
+		String ss = (""+seconds);
+		if(seconds < 10)
+			ss = ("0"+seconds);
+		
+		return (sh + ":" + sm + ":" + ss);
+	}
 
 	public static String getTimer(String start, String end) {
 		startHours = Integer.parseInt(start.substring(0, 2));
