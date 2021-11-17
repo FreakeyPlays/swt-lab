@@ -145,6 +145,8 @@ public class mainController implements Initializable {
 	private static boolean isWorking;
 	private static boolean isOnBreak = false;
 	private static LocalDate selectedDate;
+	
+	private String breakStartTime;
 
 	public void printCurrentTime(String t) {
 		activeWorktimeTxt.setText(t);
@@ -266,9 +268,12 @@ public class mainController implements Initializable {
 		if (isWorking) {
 			if (isOnBreak) {
 				isOnBreak = false;
+				DBUtils.compareData(LocalDate.now(), TimeStamp.getTimer(DBUtils.getStartEnd()[0], 
+						TimeStamp.getTimestamp()), TimeStamp.getTimer(breakStartTime, TimeStamp.getTimestamp()));
 				breakBtn.setText("Start Break");
 			} else {
 				isOnBreak = true;
+				breakStartTime=TimeStamp.getTimestamp();
 				breakBtn.setText("End Break");
 			}
 		} else {

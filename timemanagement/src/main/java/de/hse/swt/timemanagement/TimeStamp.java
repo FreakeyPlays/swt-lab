@@ -4,9 +4,9 @@ import java.util.Calendar;
 
 public class TimeStamp {
 	
-	private int hours = 0;
-	private int minute = 0;
-	private int seconds = 0;
+	private static int hours = 0;
+	private static int minute = 0;
+	private static int seconds = 0;
 
 	private static int startHours = 0;
 	private static int startMinutes = 0;
@@ -24,11 +24,13 @@ public class TimeStamp {
 	private static int finalMinutes = 0;
 	private static int finalSeconds = 0;
 	
-	public String getTimestamp() {
+	
+	
+	public static String getTimestamp() {
 		Calendar calendar = Calendar.getInstance();
-		hours = calendar.get(calendar.HOUR);
-		minute = calendar.get(calendar.MINUTE);
-		seconds = calendar.get(calendar.SECOND);
+		hours = calendar.get(Calendar.HOUR);
+		minute = calendar.get(Calendar.MINUTE);
+		seconds = calendar.get(Calendar.SECOND);
 
 		
 		String sh = (""+hours);	//Dieser block ist dazu da dass uhrzeiten in dem format angegeben werden können : 10:03:23
@@ -43,7 +45,7 @@ public class TimeStamp {
 		
 		return (sh + ":" + sm + ":" + ss);
 	}
-
+	
 	public static String getTimer(String start, String end) {
 		startHours = Integer.parseInt(start.substring(0, 2));
 		startMinutes = Integer.parseInt(start.substring(3, 5));
