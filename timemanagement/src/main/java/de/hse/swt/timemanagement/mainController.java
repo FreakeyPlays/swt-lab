@@ -147,6 +147,8 @@ public class mainController implements Initializable {
 	private static LocalDate selectedDate;
 	
 	private String breakStartTime;
+	
+	private String cheeseString = "00:00:00";
 
 	public void printCurrentTime(String t) {
 		activeWorktimeTxt.setText(t);
@@ -268,8 +270,9 @@ public class mainController implements Initializable {
 		if (isWorking) {
 			if (isOnBreak) {
 				isOnBreak = false;
-				DBUtils.compareData(LocalDate.now(), TimeStamp.getTimer(DBUtils.getStartEnd()[0], 
-						TimeStamp.getTimestamp()), TimeStamp.getTimer(breakStartTime, TimeStamp.getTimestamp()));
+				cheeseString = TimeStamp.calcTime( TimeStamp.calcTime(TimeStamp.getTimestamp(), "-", breakStartTime), "+" , cheeseString);
+				System.out.println("Break time added: " + cheeseString);
+				DBUtils.compareData(LocalDate.now(), "00:00:00", cheeseString);
 				breakBtn.setText("Start Break");
 			} else {
 				isOnBreak = true;

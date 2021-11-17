@@ -500,7 +500,7 @@ public class DBUtils {
             }
         }
     }
-
+    
     public static String[] getStartEnd() {
         Connection connection = null;
         Statement statement = null;
@@ -550,6 +550,53 @@ public class DBUtils {
         return times;
     }
 
+    public static String getBreakTime() {
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        String times =  "00:00:00";
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery("SELECT break FROM timetable_" + usr.getID() + " WHERE date='"
+                    + LocalDate.now().toString() + "'");
+
+            if (!resultSet.next()) {
+                return times;
+            } else {
+                times =  resultSet.getString("break");
+                return times;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (resultSet != null) {
+                try {
+                    resultSet.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (statement != null) {
+                try {
+                    statement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return times;
+    }
+    
     public static void setWorktime(String time) {
         Connection connection = null;
         Statement statement = null;
