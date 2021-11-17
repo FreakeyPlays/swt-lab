@@ -433,6 +433,11 @@ public class DBUtils {
                 return true;
             } else {
                 System.out.println("Already worked Today!");
+                
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+				alert.setContentText("Already worked Today!");
+				alert.show();
+                
                 return false;
             }
         } catch (SQLException e) {
