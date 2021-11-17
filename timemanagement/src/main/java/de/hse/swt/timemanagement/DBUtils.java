@@ -550,21 +550,22 @@ public class DBUtils {
         return times;
     }
 
-    public static String getBreakTime() {
-        Connection connection = null;
+    public static String[] getWorkBreakTime() {
+    	Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
-        String times =  "00:00:00";
+
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/swt", "root", "");
             statement = connection.createStatement();
-            resultSet = statement.executeQuery("SELECT break FROM timetable_" + usr.getID() + " WHERE date='"
+            resultSet = statement.executeQuery("SELECT worktime, break FROM timetable_" + usr.getID() + " WHERE date='"
                     + LocalDate.now().toString() + "'");
 
             if (!resultSet.next()) {
+                String[] times = { "", "" };
                 return times;
             } else {
-                times =  resultSet.getString("break");
+                String[] times = { resultSet.getString("worktime"), resultSet.getString("break") };
                 return times;
             }
         } catch (SQLException e) {
@@ -594,6 +595,7 @@ public class DBUtils {
                 }
             }
         }
+        String[] times = { "", "" };
         return times;
     }
     

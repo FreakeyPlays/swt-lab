@@ -249,6 +249,7 @@ public class mainController implements Initializable {
 					DBUtils.enterEndWorktime(time[0]);
 					String[] arr = DBUtils.getStartEnd();
 					String workedTime = TimeStamp.getTimer(arr[0], arr[1]);
+					workedTime = TimeStamp.calcTime(workedTime, "-", DBUtils.getWorkBreakTime()[1]);
 					DBUtils.setWorktime(workedTime);
 					activeWorktimeTxt.setText(displayTimeFormat(workedTime));
 
@@ -270,7 +271,8 @@ public class mainController implements Initializable {
 		if (isWorking) {
 			if (isOnBreak) {
 				isOnBreak = false;
-				cheeseString = TimeStamp.calcTime( TimeStamp.calcTime(TimeStamp.getTimestamp(), "-", breakStartTime), "+" , cheeseString);
+				cheeseString = TimeStamp.calcTime( TimeStamp.calcTime(TimeStamp.getTimestamp(), "-", breakStartTime), "+" , DBUtils.getWorkBreakTime()[1]);
+				
 				System.out.println("Break time added: " + cheeseString);
 				DBUtils.compareData(LocalDate.now(), "00:00:00", cheeseString);
 				breakBtn.setText("Start Break");
