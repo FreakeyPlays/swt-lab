@@ -51,7 +51,7 @@ public class DBUtils {
                                 resultSet.getString("hierarchy"), resultSet.getInt("groupid"),
                                 resultSet.getInt("vacationdays"));
                         App.setRoot("main", 1280, 720);
-                        if (usr.getHierarchy().equals("supervisor"))
+                        if (usr.getHierarchy().equals("Supervisor"))
                             mainController.showSupervisorMenu();
                         mainController.setNames(usr.getFirstName(), usr.getLastName(), usr.getVacDays());
                     } else {
@@ -433,11 +433,11 @@ public class DBUtils {
                 return true;
             } else {
                 System.out.println("Already worked Today!");
-                
+
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-				alert.setContentText("Already worked Today!");
-				alert.show();
-                
+                alert.setContentText("Already worked Today!");
+                alert.show();
+
                 return false;
             }
         } catch (SQLException e) {
@@ -500,7 +500,7 @@ public class DBUtils {
             }
         }
     }
-    
+
     public static String[] getStartEnd() {
         Connection connection = null;
         Statement statement = null;
@@ -551,7 +551,7 @@ public class DBUtils {
     }
 
     public static String[] getWorkBreakTime() {
-    	Connection connection = null;
+        Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
 
@@ -598,7 +598,7 @@ public class DBUtils {
         String[] times = { "", "" };
         return times;
     }
-    
+
     public static void setWorktime(String time) {
         Connection connection = null;
         Statement statement = null;
