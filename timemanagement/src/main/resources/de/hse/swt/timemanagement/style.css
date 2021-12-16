@@ -1,0 +1,105 @@
+.window {
+  -fx-background-radius: 16px 16px 16px 16px;
+}
+
+.btn {
+  -fx-background-color: transparent;
+  -fx-border-color: #000;
+  -fx-border-width: 2px;
+  -fx-border-radius: 8px;
+}
+
+.btn:hover {
+  -fx-background-color: #536df3;
+  -fx-background-radius: 10px;
+  -fx-text-fill: #fff;
+}
+
+.input {
+  -fx-background-color: #ececec;
+  -fx-background-radius: 4px 4px 0 0;
+  -fx-border-width: 0 0 2px 0;
+  -fx-border-color: #536df3;
+}
+
+.input:error {
+  -fx-background-color: rgb(245, 160, 160);
+  -fx-border-color: red;
+}
+
+.input:focused:correct {
+  -fx-background-color: rgb(161, 214, 161);
+  -fx-border-color: green;
+}
+
+.textArea {
+  -fx-background-color: transparent;
+}
+
+.textArea .content {
+  -fx-background-radius: 4px 4px 0 0;
+  -fx-background-color: #ececec;
+  -fx-border-width: 0 0 2px 0;
+  -fx-border-color: #536df3;
+}
+
+.textArea .scroll-bar:vertical {
+  -fx-pref-width: 1;
+  -fx-opacity: 0;
+}
+
+/*##### Login-Page #####*/
+
+.loginLeftBG {
+  -fx-background-color: #536df3;
+  -fx-background-radius: 16px 0 0 16px;
+}
+
+.loginRightBG {
+  -fx-background-color: #fff;
+  -fx-background-radius: 0 16px 16px 0;
+}
+
+/*##### Main Page #####*/
+
+.mainMenu {
+  -fx-background-color: #d7d7d9;
+  -fx-background-radius: 16px 0 0 16px;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0, 7, 0);
+}
+
+/*Menu Bar*/
+.menuBtn {
+  -fx-background-color: transparent;
+}
+
+.menuBtn:hover {
+  -fx-background-color: #657ef8;
+}
+
+.active {
+  -fx-background-color: #536df3;
+}
+
+.inputCombo .arrow {
+  -fx-background-color: #536df3;
+}
+
+.inputCombo .arrow-button {
+  -fx-background-color: #ececec;
+}
+
+.inputCombo .list-cell {
+  -fx-background-color: #ececec;
+}
+
+.inputCombo .list-cell:hover {
+  -fx-background-color: #657ef8;
+}
+/*Worktime Window*/
+
+/*FlexTime Window*/
+
+/*Vacation Booking Window*/
+
+/*Employee Interact Window*/
